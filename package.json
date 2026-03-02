@@ -1,6 +1,6 @@
 {
   "name": "@sandrinio/vbounce",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "V-Bounce OS: Turn your AI coding assistant into a full engineering team through structured SDLC skills.",
   "type": "module",
   "bin": {
@@ -38,5 +38,12 @@
     "skills",
     "scripts",
     "docs"
-  ]
+  ],
+  "dependencies": {
+    "@lancedb/lancedb": "^0.26.2",
+    "@xenova/transformers": "^2.17.2",
+    "commander": "^14.0.3",
+    "js-yaml": "^4.1.1",
+    "marked": "^17.0.3"
+  }
 }

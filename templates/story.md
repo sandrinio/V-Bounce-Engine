@@ -148,3 +148,4 @@ POST /api/resource
 - [ ] LESSONS.md consulted before implementation.
 - [ ] No violations of Roadmap ADRs.
 - [ ] Documentation (API/Tech Stack) updated.
+- [ ] **Framework Integrity**: If `brains/` or `skills/` were modified, log to `brains/CHANGELOG.md` and run `./scripts/pre_bounce_sync.sh`.

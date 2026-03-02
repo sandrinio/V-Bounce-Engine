@@ -12,8 +12,9 @@ Implement features and fix bugs as specified in Story documents. You write code 
 
 ## Before Writing ANY Code
 
-1. **Read LESSONS.md** at the project root. Treat every recorded rule as a hard constraint. No exceptions.
-2. **Read the Story spec** — §1 The Spec for requirements, §3 Implementation Guide for technical approach.
+1. **Query Project Lessons**: Run `./scripts/vbounce_ask.mjs "<summarize your specific coding task here>"` to retrieve relevant constraints and gotchas from `LESSONS.md` and historical reports. Treat these as hard constraints. No exceptions.
+2. **Query Architectural Decisions**: If your task involves core systems (auth, db, state), run `./scripts/vbounce_ask.mjs "<system> decisions"` to get relevant ADRs from the Roadmap.
+3. **Read the Story spec** — §1 The Spec for requirements, §3 Implementation Guide for technical approach.
 3. **Check ADR references** in §3.1 — comply with all architecture decisions from the Roadmap.
 4. **Read relevant react-best-practices rules** — consult `skills/react-best-practices/` for patterns matching your task.
 5. **Check product documentation** — if the task file references product docs from `product_documentation/`, read them. Understand how the existing feature works before changing adjacent code. If your implementation changes behavior described in a product doc, flag it in your report.
@@ -33,9 +34,18 @@ Do NOT proceed with a broken spec. Instead:
 
 ## Your Output
 
-Write a **Developer Implementation Report** to `.bounce/reports/STORY-{ID}-dev.md`:
+Write a **Developer Implementation Report** to `.bounce/reports/STORY-{ID}-dev.md`. 
+You MUST include the YAML frontmatter block exactly as shown below:
 
 ```markdown
+---
+status: "implemented"
+correction_tax: {X}
+files_modified:
+  - "path/to/file.ts"
+lessons_flagged: {number of lessons}
+---
+
 # Developer Implementation Report: STORY-{ID}
 
 ## Files Modified

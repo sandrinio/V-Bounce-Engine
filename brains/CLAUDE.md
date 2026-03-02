@@ -50,9 +50,10 @@ Before starting any sprint, the Team Lead MUST:
 
 ### Phase 2: The Bounce (Implementation)
 **Standard Path (L2-L4 Stories):**
+0. Team Lead runs `./scripts/pre_bounce_sync.sh` to ensure LanceDB RAG context is fresh.
 1. Team Lead sends Story context pack to Developer.
-2. Developer reads LESSONS.md, implements code, writes Implementation Report.
-3. QA runs Quick Scan + PR Review, validates against Story §2 The Truth. If fail → Bug Report to Dev.
+2. Developer queries LanceDB, implements code, writes Implementation Report. CLI Orchestrator must run `./scripts/validate_report.mjs` on the report to enforce YAML strictness.
+3. QA runs Quick Scan + PR Review, validates against Story §2 The Truth. If fail → Bug Report to Dev. CLI Orchestrator must run `./scripts/validate_report.mjs` on the QA report before passing to Architect/Dev.
 4. Dev fixes and resubmits. 3+ failures → Escalated.
 5. Architect runs Deep Audit + Trend Check, validates Safe Zone compliance and ADR adherence.
 6. DevOps merges story branch into sprint branch, validates post-merge, handles release tagging.
@@ -106,6 +107,8 @@ Draft → Refinement → Ready to Bounce → Bouncing → QA Passed → Architec
 9. **Reports are the only handoff**. No direct agent-to-agent communication.
 10. **One source of truth**. Reference upstream documents, don't duplicate.
 11. **Change Logs are mandatory** on every document modification.
+12. **Agent Reports MUST use YAML Frontmatter**. Every `.bounce/report/` generated must start with a strict `---` YAML block containing the core status and metrics before the Markdown body.
+13. **Framework Integrity**. Any modification to a `brains/` or `skills/` file MUST be recorded in `brains/CHANGELOG.md` and trigger `./scripts/pre_bounce_sync.sh`.
 
 ## Framework Structure
 

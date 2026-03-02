@@ -5,6 +5,7 @@ Step-by-step guide to set up V-Bounce OS in an existing or new project.
 ## Prerequisites
 
 - A git repository (V-Bounce OS uses branches and worktrees)
+- Node.js installed (for validation and semantic search scripts)
 - At least one supported AI coding tool installed
 - The V-Bounce OS folder (this repo)
 
@@ -115,6 +116,17 @@ The agent will:
 3. Run the Bounce loop (Dev → QA → Architect)
 4. Merge completed stories
 5. Generate a Sprint Report for your review
+
+## Step 7: Automated RAG Initialization
+
+V-Bounce OS uses LanceDB to provide agents with targeted context. While the `npx @sandrinio/vbounce install` command handles this automatically, you can manually re-trigger a sync if you add new architectural rules or change your brains:
+
+```bash
+# Re-build your local knowledge base
+./scripts/pre_bounce_sync.sh
+```
+
+This updates your local embeddings in `.bounce/.lancedb/`. Agents use `./scripts/vbounce_ask.mjs` to fetch rules on demand, ensuring they are always aligned with your latest Roadmap and Lessons.
 
 ## Folder Structure After Setup
 

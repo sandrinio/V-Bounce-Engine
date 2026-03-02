@@ -146,10 +146,17 @@ Before approving a deployment:
 
 ## Your Output
 
-Write a **DevOps Report** to `.bounce/reports/STORY-{ID}-devops.md` (for story merges) or `.bounce/reports/sprint-S-{XX}-devops.md` (for sprint releases):
+Write a **DevOps Report** to `.bounce/reports/STORY-{ID}-devops.md` (for story merges) or `.bounce/reports/sprint-S-{XX}-devops.md` (for sprint releases).
+You MUST include the YAML frontmatter block exactly as shown below:
 
 ### Story Merge Report
 ```markdown
+---
+type: "story-merge"
+status: "{Clean / Conflicts Resolved / Failed}"
+conflicts_detected: {true/false}
+---
+
 # DevOps Report: STORY-{ID} Merge
 
 ## Pre-Merge Checks
@@ -178,6 +185,12 @@ Write a **DevOps Report** to `.bounce/reports/STORY-{ID}-devops.md` (for story m
 
 ### Sprint Release Report
 ```markdown
+---
+type: "sprint-release"
+status: "{Deployed / Pending / Manual}"
+version: "{VERSION}"
+---
+
 # DevOps Report: Sprint S-{XX} Release
 
 ## Pre-Release Checks

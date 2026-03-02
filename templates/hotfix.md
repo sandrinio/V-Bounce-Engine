@@ -56,4 +56,5 @@ Do NOT output these instructions.
 
 - [ ] {Simple step, e.g., "Open the settings modal and verify the button is aligned."}
 - [ ] Automated tests still pass (`npm test`).
+- [ ] **Framework Integrity**: If `brains/` or `skills/` were modified, log to `brains/CHANGELOG.md` and run `./scripts/pre_bounce_sync.sh`.
 - [ ] **Post-Fix Action**: Run `./scripts/hotfix_manager.sh ledger "HOTFIX: {Name}" "{Brief Fix Description}"`

@@ -12,7 +12,7 @@ Validate that the Developer's implementation meets the Story's acceptance criter
 
 ## Before Testing
 
-1. **Read LESSONS.md** at the project root. Check for known failure patterns relevant to this story.
+1. **Query Project Lessons**: Run `./scripts/vbounce_ask.mjs "<summarize the story spec here>"` to retrieve known failure patterns relevant to this story from `LESSONS.md` and past reports.
 2. **Read the Developer Implementation Report** (`.bounce/reports/STORY-{ID}-dev.md`) to understand what was built.
 3. **Read Story §2 The Truth** — these are your pass/fail criteria. If the Gherkin scenarios don't pass, the bounce failed.
 
@@ -58,10 +58,18 @@ Check for unnecessary complexity the Developer added beyond the Story spec:
 
 ## Your Output
 
-Write a **QA Validation Report** to `.bounce/reports/STORY-{ID}-qa.md`:
+Write a **QA Validation Report** to `.bounce/reports/STORY-{ID}-qa.md`.
+You MUST include the YAML frontmatter block exactly as shown below:
 
 ### If Tests PASS:
 ```markdown
+---
+status: "PASS"
+bounce_count: {N}
+bugs_found: 0
+gold_plating_detected: false
+---
+
 # QA Validation Report: STORY-{ID} — PASS
 
 ## Quick Scan Results
@@ -98,6 +106,15 @@ PASS — Ready for Architect review.
 
 ### If Tests FAIL:
 ```markdown
+---
+status: "FAIL"
+bounce_count: {N}
+bugs_found: {number of bugs}
+gold_plating_detected: {true/false}
+failed_scenarios:
+  - "{scenario name}"
+---
+
 # QA Validation Report: STORY-{ID} — FAIL (Bounce {N})
 
 ## Failures

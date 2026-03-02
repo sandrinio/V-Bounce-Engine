@@ -48,7 +48,9 @@ npx @sandrinio/vbounce install codex
 ### What gets installed?
 - **Agent Instructions:** The "Brain" file (e.g., `CLAUDE.md`, `.cursor/rules/`) that teaches your AI how to follow the V-Bounce process.
 - **Templates:** Markdown templates for your Charter, Roadmap, Epics, and Stories.
-- **vdoc Integration:** Fully bundled with [`@sandrinio/vdoc`](https://github.com/sandrinio/vdoc) to automatically construct the `vdocs/` semantic documentation folder.
+- **Bundled Scripts:** Our validation pipeline (`validate_report.mjs`) and RAG synchronization engine (`pre_bounce_sync.sh`).
+- **Autonomous RAG Setup:** The installer automatically runs `npm install` for required libraries and initializes your local LanceDB knowledge base (`.bounce/.lancedb/`).
+- **vdoc Integration:** Fully compatible with [`@sandrinio/vdoc`](https://github.com/sandrinio/vdoc) to automatically construct semantic product documentation.
 
 ### 🧰 The Bundled Skills
 V-Bounce OS installs a powerful suite of specialized markdown `skills/` directly into your workspace. These act as modular capabilities you can invoke dynamically or that the Team Lead agent will invoke automatically during the SDLC process:

@@ -14,7 +14,7 @@ Audit the codebase for structural integrity, standards compliance, and long-term
 
 ## Before Auditing
 
-1. **Read LESSONS.md** at the project root. Check for historical architectural decisions and past mistakes.
+1. **Query Project Lessons**: Run `./scripts/vbounce_ask.mjs "architectural constraints and historical mistakes for <story summary>"` to retrieve relevant context from `LESSONS.md` and past reports.
 2. **Read all reports** for this story (`.bounce/reports/STORY-{ID}-*.md`) — Dev Report, QA Report.
 3. **Read the full Story spec** — especially §3 Implementation Guide and §3.1 ADR References.
 4. **Read Roadmap §3 ADRs** — every architecture decision the implementation must comply with.
@@ -65,10 +65,18 @@ Check that the changes don't break existing functionality:
 
 ## Your Output
 
-Write an **Architectural Audit Report** to `.bounce/reports/STORY-{ID}-arch.md`:
+Write an **Architectural Audit Report** to `.bounce/reports/STORY-{ID}-arch.md`.
+You MUST include the YAML frontmatter block exactly as shown below:
 
 ### If Audit PASSES:
 ```markdown
+---
+status: "PASS"
+safe_zone_score: {SCORE}
+ai_isms_detected: {count}
+regression_risk: "{Low/Medium/High}"
+---
+
 # Architectural Audit Report: STORY-{ID} — PASS
 
 ## Safe Zone Compliance: {SCORE}/10
@@ -108,6 +116,12 @@ PASS — Ready for Sprint Review.
 
 ### If Audit FAILS:
 ```markdown
+---
+status: "FAIL"
+bounce_count: {N}
+critical_failures: {count}
+---
+
 # Architectural Audit Report: STORY-{ID} — FAIL
 
 ## Critical Failures
