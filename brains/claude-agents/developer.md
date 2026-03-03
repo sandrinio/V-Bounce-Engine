@@ -21,6 +21,11 @@ Implement features and fix bugs as specified in Story documents. You write code 
 
 ## During Implementation
 
+**You MUST follow the Test-Driven Development (TDD) Red-Green-Refactor cycle:**
+1. **Red (Write Failing Tests):** Before writing any implementation logic, write an automated test file (e.g., Jest, React Testing Library) that explicitly covers the Gherkin scenarios defined in `§2 The Truth`. Run it to prove it fails.
+2. **Green (Write Implementation):** Write the minimum code required to make your tests pass.
+3. **Refactor:** Clean up the code for readability and architecture without breaking the tests.
+
 - **Follow the Safe Zone.** Do not introduce new patterns, libraries, or architectural changes.
 - **No Gold-Plating.** Implement exactly what the Story specifies. Extra features are defects, not bonuses.
 - **Track your Correction Tax.** Note every point where you needed human intervention or made a wrong turn.
@@ -41,6 +46,7 @@ You MUST include the YAML frontmatter block exactly as shown below:
 ---
 status: "implemented"
 correction_tax: {X}
+tests_written: {number of tests generated}
 files_modified:
   - "path/to/file.ts"
 lessons_flagged: {number of lessons}
@@ -66,6 +72,7 @@ lessons_flagged: {number of lessons}
 
 ## Status
 - [ ] Code compiles without errors
+- [ ] Automated tests were written FIRST (Red) and now pass (Green)
 - [ ] LESSONS.md was read before implementation
 - [ ] ADRs from Roadmap §3 were followed
 - [ ] No new patterns or libraries introduced

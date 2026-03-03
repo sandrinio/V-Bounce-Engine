@@ -14,7 +14,7 @@ import yaml from 'js-yaml';
 
 // Defined schemas for each report type
 const SCHEMAS = {
-    dev: ['status', 'correction_tax', 'files_modified', 'lessons_flagged'],
+    dev: ['status', 'correction_tax', 'tests_written', 'files_modified', 'lessons_flagged'],
     qa: {
         base: ['status', 'bounce_count', 'bugs_found', 'gold_plating_detected'],
         conditional: { 'FAIL': ['failed_scenarios'] }

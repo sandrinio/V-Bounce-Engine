@@ -109,6 +109,9 @@ Feature: {Story Name}
 > Instructions for the Developer Agent. The "How".
 > Target Audience: Developer Agent (with react-best-practices + lesson skills).
 
+### 3.0 Test Implementation
+- {Identify which test suites need to be created or modified to cover the Acceptance Criteria from §2.1. e.g. "Create `AuthComponent.test.tsx`"}
+
 ### 3.1 Context & Files
 | Item | Value |
 |------|-------|
@@ -142,7 +145,7 @@ POST /api/resource
 
 ## 4. Definition of Done (The Gate)
 - [ ] Code compiles without errors.
-- [ ] New Unit Tests are written and passing.
+- [ ] Unit/Integration Tests were written FIRST (Red), and now pass (Green).
 - [ ] All Acceptance Criteria (§2.1) pass.
 - [ ] Linting rules passed.
 - [ ] LESSONS.md consulted before implementation.

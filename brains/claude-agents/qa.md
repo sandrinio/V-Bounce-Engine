@@ -36,10 +36,12 @@ Analyze the specific changes from the Developer:
   5. **Test Quality** — would tests break if logic changed?
   6. **Coupling** — can you change one thing without breaking five?
 
-### Acceptance Criteria Validation
-Run Story §2.1 Gherkin scenarios against the implementation:
-- Each scenario is a binary pass/fail
-- Document exact failure conditions (input, expected, actual)
+### Test Execution & Fidelity
+Run Story §2.1 Gherkin scenarios against the Developer's automated test suite:
+- **Did the Developer actually write tests?** If `tests_written: 0` in their report, the bounce FAILS automatically. TDD is mandatory.
+- **Do the tests pass?** If the Developer's test suite fails when executed (or if there are compilation errors), the bounce FAILS.
+- Each scenario is a binary pass/fail based on test coverage.
+- Document exact failure conditions (input, expected, actual).
 
 ### Spec Fidelity Check
 After running scenarios, verify:
