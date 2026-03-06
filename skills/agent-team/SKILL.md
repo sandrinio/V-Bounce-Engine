@@ -201,20 +201,24 @@ Examples:
    e. DevOps runs `hotfix_manager.sh sync` to update any active story worktrees.
    f. Update Delivery Plan Status to "Done".
 
-6. **Parallel Readiness Check** (before bouncing multiple stories simultaneously):
+6. **Gate Config Check**:
+   - If `.bounce/gate-checks.json` does not exist, run `./scripts/init_gate_config.sh` to auto-detect the project stack and generate default gate checks.
+   - If it exists, verify it's current (stack detection may have changed).
+
+7. **Parallel Readiness Check** (before bouncing multiple stories simultaneously):
    - Verify test runner config excludes `.worktrees/` (vitest, jest, pytest, etc.)
    - Verify no shared mutable state between worktrees (e.g., shared temp files, singletons writing to same path)
    - Verify `.gitignore` includes `.worktrees/`
    If any check fails, fix before spawning parallel stories. Intermittent test failures from worktree cross-contamination erode trust in the test suite fast.
 
-7. **Dependency Check & Execution Mode**:
+8. **Dependency Check & Execution Mode**:
    - For each story, check the `Depends On:` field in its template.
    - If Story B depends on Story A, you MUST execute them sequentially. Do not create Story B's worktree or spawn its Developer until Story A has successfully passed the DevOps merge step.
    - Determine Execution Mode:
      - **Full Bounce (Default)**: Normal L2-L4 stories go through full Dev → QA → Architect → DevOps flow.
      - **Fast Track (L1/L2 Minor)**: For cosmetic UI tweaks or isolated refactors, execute Dev → DevOps only. Skip QA and Architect loops to save overhead. Validate manually during Sprint Review.
      
-8. Update sprint-{XX}.md: Status → "Active"
+9. Update sprint-{XX}.md: Status → "Active"
 ```
 
 ### Step 1: Story Initialization
@@ -245,11 +249,18 @@ mkdir -p .worktrees/STORY-{ID}-{StoryName}/.bounce/{tasks,reports}
 
 ### Step 3: QA Pass
 ```
+0. Run pre-QA gate scan:
+   ./scripts/pre_gate_runner.sh qa .worktrees/STORY-{ID}-{StoryName}/ sprint/S-{XX}
+   - If scan FAILS on trivial issues (debug statements, missing JSDoc, TODOs):
+     Return to Developer for quick fix. Do NOT spawn QA for mechanical failures.
+   - If scan PASSES: Include scan output path in the QA task file.
 1. Spawn qa subagent in .worktrees/STORY-{ID}-{StoryName}/ with:
    - Developer Implementation Report
+   - Pre-QA scan results (.bounce/reports/pre-qa-scan.txt)
    - Story §2 The Truth (acceptance criteria)
    - LESSONS.md
 2. QA validates against Gherkin scenarios, runs vibe-code-review
+   (skipping checks already covered by pre-qa-scan.txt)
 3. If FAIL:
    - QA writes Bug Report (STORY-{ID}-{StoryName}-qa-bounce{N}.md)
    - Increment bounce counter
@@ -262,8 +273,14 @@ mkdir -p .worktrees/STORY-{ID}-{StoryName}/.bounce/{tasks,reports}
 
 ### Step 4: Architect Pass
 ```
+0. Run pre-Architect gate scan:
+   ./scripts/pre_gate_runner.sh arch .worktrees/STORY-{ID}-{StoryName}/ sprint/S-{XX}
+   - If scan reveals new dependencies or structural violations:
+     Return to Developer for resolution. Do NOT spawn Architect for mechanical failures.
+   - If scan PASSES: Include scan output path in the Architect task file.
 1. Spawn architect subagent in .worktrees/STORY-{ID}-{StoryName}/ with:
    - All reports for this story
+   - Pre-Architect scan results (.bounce/reports/pre-arch-scan.txt)
    - Full Story spec + Roadmap §3 ADRs
    - LESSONS.md
 2. If FAIL:
@@ -286,7 +303,7 @@ mkdir -p .worktrees/STORY-{ID}-{StoryName}/.bounce/{tasks,reports}
    - Pre-merge checks (worktree clean, gate reports verified)
    - Archive reports to .bounce/archive/S-{XX}/STORY-{ID}-{StoryName}/
    - Merge story branch into sprint branch (--no-ff)
-   - Post-merge validation (tests + build on sprint branch)
+   - Post-merge validation (tests + lint + build on sprint branch)
    - Worktree removal and story branch cleanup
 3. DevOps writes Merge Report to .bounce/archive/S-{XX}/STORY-{ID}-{StoryName}/STORY-{ID}-{StoryName}-devops.md
 4. If merge conflicts:

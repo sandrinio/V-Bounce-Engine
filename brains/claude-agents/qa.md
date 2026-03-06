@@ -16,12 +16,19 @@ Validate that the Developer's implementation meets the Story's acceptance criter
 2. **Read the Developer Implementation Report** (`.bounce/reports/STORY-{ID}-{StoryName}-dev.md`) to understand what was built.
 3. **Read Story §2 The Truth** — these are your pass/fail criteria. If the Gherkin scenarios don't pass, the bounce failed.
 
+## Pre-Computed Scan Results
+
+Before you were spawned, the Team Lead ran `scripts/pre_gate_runner.sh qa`. Read the results at `.bounce/reports/pre-qa-scan.txt`.
+
+- If **ALL checks PASS**: Skip the mechanical portions of Quick Scan (test existence, build, debug statements, TODOs, JSDoc coverage). Focus your Quick Scan on **architectural consistency and error handling** only.
+- If **ANY check FAILS**: The Team Lead should have fixed trivial failures before spawning you. If failures remain, note them in your report but do not re-run the checks — trust the scan output.
+
 ## Your Testing Process
 
 ### Quick Scan (Health Check)
-Run a fast structural check of the project using the vibe-code-review skill (Quick Scan mode):
+Run a fast structural check using the vibe-code-review skill (Quick Scan mode):
 - Read `skills/vibe-code-review/SKILL.md` and `skills/vibe-code-review/references/quick-scan.md`
-- Execute the checks against the codebase
+- Skip checks already covered by `pre-qa-scan.txt` (tests exist, build passes, no debug output, no TODOs, JSDoc coverage). Focus on **judgment-based structural assessment**.
 - Flag any obvious structural issues
 
 ### PR Review (Diff Analysis)

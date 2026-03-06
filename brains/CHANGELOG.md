@@ -6,6 +6,17 @@ Per **Rule 13: Framework Integrity**, anytime an entry is made here, the orchest
 ## [2026-03-02]
 - **Initialized**: Created strict Framework Integrity tracking, YAML context handoffs, and RAG validation pipeline.
 
+## [2026-03-06] — Pre-Gate Automation
+- **Added**: `scripts/pre_gate_common.sh` — shared gate check functions with auto-detection for JS/TS, Python, Rust, Go stacks.
+- **Added**: `scripts/pre_gate_runner.sh` — universal pre-gate scanner. Reads `.bounce/gate-checks.json` config or falls back to auto-detected defaults. Runs before QA (`qa`) and Architect (`arch`) agents to catch mechanical failures with zero tokens.
+- **Added**: `scripts/init_gate_config.sh` — auto-detects project stack (language, framework, test runner, build/lint commands) and generates `.bounce/gate-checks.json`.
+- **Modified**: `brains/claude-agents/qa.md` — added Pre-Computed Scan Results section. QA skips checks covered by `pre-qa-scan.txt`.
+- **Modified**: `brains/claude-agents/architect.md` — added Pre-Computed Scan Results section. Architect skips mechanical checks covered by `pre-arch-scan.txt`.
+- **Modified**: `brains/claude-agents/devops.md` — added `npm run lint` (tsc --noEmit) to post-merge validation.
+- **Modified**: `skills/agent-team/SKILL.md` — wired pre-gate scans into Steps 3 (QA) and 4 (Architect). Added gate config init to Step 0 sprint setup. Added lint to post-merge validation.
+- **Modified**: All brain files (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `cursor-rules/vbounce-process.mdc`) — updated bounce sequence to include pre-gate scan steps.
+- **Modified**: `skills/improve/SKILL.md` — added Gate Check Proposals section for iteratively growing project-specific checks via `gate-checks.json`.
+
 ## [2026-03-06]
 - **Fixed**: All brain files (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`) incorrectly referenced `DELIVERY_PLAN.md §5 Open Questions` or `ACTIVE_SPRINT.md §3 Open Questions`. Corrected to `sprint-{XX}.md §2 Sprint Open Questions` to match the authoritative `agent-team/SKILL.md` and `sprint.md` template.
 - **Fixed**: Removed duplicate "Product Plans Folder Structure" header in `doc-manager/SKILL.md`.

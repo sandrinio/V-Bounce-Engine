@@ -22,11 +22,13 @@ Before sprints: Lead triages request (L1 Trivial → Hotfix Path. L2-L4 → Epic
 0. Team Lead runs `./scripts/pre_bounce_sync.sh` to ensure LanceDB RAG context is fresh.
 1. Team Lead sends Story context pack to Developer.
 2. Developer reads LESSONS.md, implements code, writes Implementation Report. CLI Orchestrator must run `./scripts/validate_report.mjs` on the report to enforce YAML strictness.
-3. QA validates against Story §2 The Truth. If fail → Bug Report to Dev. CLI Orchestrator must run `./scripts/validate_report.mjs` on the QA report before passing to Architect/Dev.
-4. Dev fixes and resubmits. 3+ failures → Escalated.
-5. Architect validates Safe Zone compliance and ADR adherence.
-6. DevOps merges story into sprint branch, validates, handles releases.
-7. Team Lead consolidates into Sprint Report.
+3. Pre-QA Gate Scan: `./scripts/pre_gate_runner.sh qa` catches mechanical failures before spawning QA. Trivial issues → return to Dev.
+4. QA validates against Story §2 The Truth (skipping pre-scanned checks). If fail → Bug Report to Dev.
+5. Dev fixes and resubmits. 3+ failures → Escalated.
+6. Pre-Architect Gate Scan: `./scripts/pre_gate_runner.sh arch` catches structural issues before spawning Architect.
+7. Architect validates Safe Zone compliance and ADR adherence (skipping pre-scanned checks).
+8. DevOps merges story into sprint branch, validates (tests + lint + build), handles releases.
+9. Team Lead consolidates into Sprint Report.
 
 **Hotfix Path (L1 Trivial Task):**
 1. Team Lead evaluates request and creates `HOTFIX-{Date}-{Name}.md`.

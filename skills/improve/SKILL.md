@@ -107,6 +107,32 @@ For script changes, describe the new behavior.}
 **Reversibility:** {Easy — revert the edit / Medium — downstream docs may need updating}
 ```
 
+#### Special Case: Gate Check Proposals
+
+When agent feedback reveals a mechanical check that was repeated manually across multiple stories (e.g., "QA checked for inline styles 4 times"), propose adding it as a pre-gate check instead of a skill/template change:
+
+```markdown
+### Proposal {N}: Add pre-gate check — {check name}
+
+**Finding:** {Agent} manually performed {check description} in {N} stories this sprint.
+**Tokens saved:** ~{estimate} per story (based on agent token usage for this check type)
+**Gate:** qa / arch
+**Check config to add to `.bounce/gate-checks.json`:**
+```json
+{
+  "id": "custom_grep",
+  "gate": "arch",
+  "enabled": true,
+  "pattern": "{regex}",
+  "glob": "{file pattern}",
+  "should_find": false,
+  "description": "{human-readable description}"
+}
+```
+```
+
+This is the primary mechanism for the gate system to grow organically — the `improve` skill reads what agents repeatedly checked by hand and proposes automating those checks via `gate-checks.json`.
+
 ### Step 5: Present to Human
 Present ALL proposals as a numbered list. The human can:
 - **Approve** — apply the change

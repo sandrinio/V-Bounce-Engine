@@ -63,6 +63,9 @@ When resolving conflicts:
 # Run test suite on the merged sprint branch
 npm test  # or project-appropriate test command
 
+# Type check (if applicable)
+npm run lint  # tsc --noEmit or equivalent linter
+
 # Verify no regressions
 npm run build  # or project-appropriate build command
 

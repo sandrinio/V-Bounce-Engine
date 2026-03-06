@@ -59,11 +59,13 @@ Before starting any sprint, the Team Lead MUST:
 0. Team Lead runs `./scripts/pre_bounce_sync.sh` to ensure LanceDB RAG context is fresh.
 1. Team Lead sends Story context pack to Developer.
 2. Developer queries LanceDB, implements code, writes Implementation Report. CLI Orchestrator must run `./scripts/validate_report.mjs` on the report to enforce YAML strictness.
-3. QA runs Quick Scan + PR Review, validates against Story §2 The Truth. If fail → Bug Report to Dev. CLI Orchestrator must run `./scripts/validate_report.mjs` on the QA report before passing to Architect/Dev.
-4. Dev fixes and resubmits. 3+ failures → Escalated.
-5. Architect runs Deep Audit + Trend Check, validates Safe Zone compliance and ADR adherence.
-6. DevOps merges story branch into sprint branch, validates post-merge, handles release tagging.
-7. Team Lead consolidates reports into Sprint Report.
+3. **Pre-QA Gate Scan:** Team Lead runs `./scripts/pre_gate_runner.sh qa` to catch mechanical failures (tests, build, lint, debug output, JSDoc) before spawning QA. If trivial issues found → return to Dev.
+4. QA runs Quick Scan + PR Review (skipping pre-scanned checks), validates against Story §2 The Truth. If fail → Bug Report to Dev. CLI Orchestrator must run `./scripts/validate_report.mjs` on the QA report.
+5. Dev fixes and resubmits. 3+ failures → Escalated.
+6. **Pre-Architect Gate Scan:** Team Lead runs `./scripts/pre_gate_runner.sh arch` to catch structural issues (new deps, file sizes) before spawning Architect. If mechanical failures → return to Dev.
+7. Architect runs Deep Audit + Trend Check (skipping pre-scanned checks), validates Safe Zone compliance and ADR adherence.
+8. DevOps merges story branch into sprint branch, validates post-merge (tests + lint + build), handles release tagging.
+9. Team Lead consolidates reports into Sprint Report.
 
 **Hotfix Path (L1 Trivial Tasks):**
 1. Team Lead evaluates request and creates `HOTFIX-{Date}-{Name}.md`.

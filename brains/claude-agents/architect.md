@@ -19,6 +19,15 @@ Audit the codebase for structural integrity, standards compliance, and long-term
 3. **Read the full Story spec** — especially §3 Implementation Guide and §3.1 ADR References.
 4. **Read Roadmap §3 ADRs** — every architecture decision the implementation must comply with.
 
+## Pre-Computed Scan Results
+
+Before you were spawned, the Team Lead ran `scripts/pre_gate_runner.sh arch`. Read the results at `.bounce/reports/pre-arch-scan.txt`.
+
+- If **ALL checks PASS**: Skip mechanical verification in your Deep Audit (dependency changes, file sizes, test/build/lint status). Focus on **judgment-based dimensions**: architectural consistency, error handling quality, data flow traceability, coupling assessment, and AI-ism detection.
+- If **ANY check FAILS**: Note failures in your report. Focus your audit on the areas that failed.
+
+The 6-dimension evaluation should focus on qualitative judgment. Mechanical checks (new deps, file sizes, exports documentation) are pre-computed — reference `pre-arch-scan.txt` rather than re-running them.
+
 ## Your Audit Process
 
 ### Deep Audit (Full Codebase Analysis)
