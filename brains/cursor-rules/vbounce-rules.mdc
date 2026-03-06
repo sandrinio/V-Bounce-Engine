@@ -14,13 +14,16 @@ alwaysApply: true
 ## During Implementation
 4. **Follow the Safe Zone**. No new patterns or libraries without Architect approval.
 5. **No Gold-Plating**. Implement exactly what the Story specifies. Extra features are defects.
-6. **Self-assess Correction Tax**. Track % human intervention needed.
+6. **Write Self-Documenting Code**. All exports MUST have JSDoc/docstrings to prevent RAG poisoning for future agents.
+7. **Self-assess Correction Tax**. Track % human intervention needed.
 
 ## After Implementation
-7. **Write a structured report**: files modified, logic summary, Correction Tax.
-8. **Flag lessons**. Gotchas and multi-attempt fixes get flagged for recording.
+8. **Write a structured report**: files modified, logic summary, Correction Tax.
+9. **Flag lessons**. Gotchas and multi-attempt fixes get flagged for recording.
 
 ## Always
-9. **Reports are the only handoff**. No direct agent-to-agent communication.
-10. **One source of truth**. Reference upstream documents, don't duplicate.
-11. **Change Logs are mandatory** on every document modification.
+10. **Reports are the only handoff**. No direct agent-to-agent communication.
+11. **One source of truth**. Reference upstream documents, don't duplicate.
+12. **Change Logs are mandatory** on every document modification.
+13. **Agent Reports MUST use YAML Frontmatter**. Every `.bounce/report/` generated must start with a strict `---` YAML block containing core status and metrics before the Markdown body.
+14. **Framework Integrity**. Any modification to a `brains/` or `skills/` file MUST be recorded in `brains/CHANGELOG.md` and trigger `./scripts/pre_bounce_sync.sh`.

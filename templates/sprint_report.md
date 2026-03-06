@@ -56,7 +56,7 @@ delivery_plan_ref: "product_plans/{delivery}/DELIVERY_PLAN.md"
 ### Product Docs Affected
 > Any product documentation files modified, created, or identified for updates. Handed off to Scribe agent.
 
-- {e.g., "product_documentation/api_reference.md — Added rate limiting details"}
+- {e.g., "vdocs/api_reference.md — Added rate limiting details"}
 
 ---
 
@@ -139,14 +139,52 @@ delivery_plan_ref: "product_plans/{delivery}/DELIVERY_PLAN.md"
 - {e.g., "STORY-001-03-api_spec escalated because the spec was ambiguous — 3 QA bounces wasted"}
 - {e.g., "Merge conflict on STORY-002-01-database required a fix story — cost an extra half-day"}
 
-### Process Improvements
-> Changes to the V-Bounce delivery process itself — not just this project, but how we work.
+### Framework Self-Assessment
+> Aggregated from agent Process Feedback sections. Categorized by area of the V-Bounce framework.
+> Severity: **Friction** (slowed work) or **Blocker** (required workaround).
+> These feed the `improve` skill for framework evolution.
 
-- {e.g., "Story specs for L3+ stories should require Architect pre-review before bouncing"}
-- {e.g., "QA found the same import ordering issue in 3 stories — add linting rule to Dev setup, not just LESSONS.md"}
-- {e.g., "L3 stories consumed 4x the tokens of L2s — add a complexity budget to sprint planning"}
-- {e.g., "First-pass success rate was 40% — require Ambiguity 🟢 on all stories, not just Context Pack checks"}
-- {e.g., "Sprint Integration Audit (Step 6) found no issues in 3 consecutive sprints — consider making it conditional for small sprints"}
+#### Templates
+> Template sections that were confusing, incomplete, had unused fields, or were missing critical information.
+
+| Finding | Source Agent | Severity | Suggested Fix |
+|---------|-------------|----------|---------------|
+| {e.g., "Story §3 missing 'existing modules to reuse' field"} | Developer | Friction | {Add a reuse checklist to the story template} |
+
+#### Agent Handoffs
+> Information that was missing, redundant, or unclear when passed between agents via reports.
+
+| Finding | Source Agent | Severity | Suggested Fix |
+|---------|-------------|----------|---------------|
+| {e.g., "Dev report didn't specify test runner — QA had to discover it"} | QA | Friction | {Add 'test_runner' to Dev report YAML frontmatter} |
+
+#### RAG Pipeline
+> Context quality issues — irrelevant results, missing critical context, stale embeddings.
+
+| Finding | Source Agent | Severity | Suggested Fix |
+|---------|-------------|----------|---------------|
+| {e.g., "Query for 'auth constraints' returned old sprint results"} | Developer | Friction | {Add date-weighted ranking to vbounce_ask.mjs} |
+
+#### Skills
+> Skill instructions that were unclear, had gaps, or could be improved for better agent performance.
+
+| Finding | Source Agent | Severity | Suggested Fix |
+|---------|-------------|----------|---------------|
+| {e.g., "vibe-code-review Deep Audit missing accessibility dimension"} | Architect | Friction | {Add dimension 7 to deep-audit.md} |
+
+#### Process Flow
+> Steps that were unnecessary, wrongly ordered, or missing for this type of work.
+
+| Finding | Source Agent | Severity | Suggested Fix |
+|---------|-------------|----------|---------------|
+| {e.g., "Fast Track stories still triggered Architect pass in the checklist"} | Team Lead | Blocker | {Update agent-team SKILL.md Step 4 skip logic} |
+
+#### Tooling & Scripts
+> Script failures, validation gaps, or automation opportunities.
+
+| Finding | Source Agent | Severity | Suggested Fix |
+|---------|-------------|----------|---------------|
+| {e.g., "validate_report.mjs doesn't check for Process Feedback section"} | Team Lead | Friction | {Add optional section validation} |
 
 ---
 

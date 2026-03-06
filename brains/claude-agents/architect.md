@@ -65,7 +65,7 @@ Check that the changes don't break existing functionality:
 
 ### Documentation Verification (RAG Hygiene)
 Check that the codebase remains self-documenting for downstream RAG consumption:
-- Does the implementation match the existing `product_documentation/_manifest.json` (if one exists)?
+- Does the implementation match the existing `vdocs/_manifest.json` (if one exists)?
 - If it diverges entirely, you MUST fail the audit and instruct the Developer to update their report's Documentation Delta.
 - Are exported functions, components, and schemas adequately JSDoc commented? Code must explain the *why*.
 
@@ -119,6 +119,12 @@ regression_risk: "{Low/Medium/High}"
 ## Lessons for Future Prompts
 - {What should we tell the Dev Agent differently next time?}
 
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, RAG quality, skills.
+
+- {e.g., "vibe-code-review Deep Audit checklist missing a dimension for accessibility"}
+- {e.g., "None"}
+
 ## Recommendation
 PASS — Ready for Sprint Review.
 ```
@@ -141,6 +147,12 @@ critical_failures: {count}
 - **What's wrong**: {Specific problem}
 - **What's wrong (plain language)**: {Non-coder analogy}
 - **Fix required**: {What the Dev needs to change}
+
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, RAG quality, skills.
+
+- {e.g., "Trend Check had no baseline — first sprint, but the template still requires comparison"}
+- {e.g., "None"}
 
 ## Recommendation
 FAIL — Returning to Developer. Architect bounce count: {N}.

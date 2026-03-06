@@ -58,6 +58,16 @@ if (!command || command !== 'install' || !targetPlatform) {
 
 const CWD = process.cwd();
 
+// Map vbounce platform names to vdoc platform names
+const vdocPlatformMap = {
+  claude: 'claude',
+  cursor: 'cursor',
+  gemini: 'gemini',
+  codex: 'agents',
+  vscode: 'vscode',
+  copilot: 'vscode'
+};
+
 const platformMappings = {
   claude: [
     { src: 'brains/CLAUDE.md', dest: 'CLAUDE.md' },
@@ -194,6 +204,26 @@ askQuestion('Proceed with installation? [y/N] ').then(async answer => {
     }
   } catch (err) {
     console.error('  \x1b[31m✖\x1b[0m Failed to initialize knowledge base. Run ./scripts/pre_bounce_sync.sh manually.');
+  }
+
+  // vdoc integration
+  const vdocPlatform = vdocPlatformMap[targetPlatform];
+  if (vdocPlatform) {
+    const rl2 = readline.createInterface({ input: process.stdin, output: process.stdout });
+    const vdocAnswer = await new Promise(resolve => rl2.question('\n📝 Install vdoc (AI-powered documentation generator)? [y/N] ', resolve));
+    rl2.close();
+
+    if (vdocAnswer.trim().toLowerCase() === 'y' || vdocAnswer.trim().toLowerCase() === 'yes') {
+      console.log(`\n📝 Installing vdoc for ${vdocPlatform}...`);
+      try {
+        execSync(`npx @sandrinio/vdoc install ${vdocPlatform}`, { stdio: 'inherit', cwd: CWD });
+        console.log('  \x1b[32m✓\x1b[0m vdoc installed.');
+      } catch (err) {
+        console.error(`  \x1b[31m✖\x1b[0m Failed to install vdoc. Run manually: npx @sandrinio/vdoc install ${vdocPlatform}`);
+      }
+    } else {
+      console.log(`\n  Skipped. You can install later: npx @sandrinio/vdoc install ${vdocPlatform}`);
+    }
   }
 
   console.log('\n✅ V-Bounce OS successfully installed! Welcome to the team.\n');

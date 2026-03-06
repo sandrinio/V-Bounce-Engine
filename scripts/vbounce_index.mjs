@@ -82,7 +82,7 @@ async function indexFile(filePath, embedder) {
     else if (filePath.includes('ROADMAP.md')) type = 'adr';
     else if (filePath.includes('.bounce/reports')) type = 'report';
     else if (filePath.includes('product_plans')) type = 'plan';
-    else if (filePath.includes('product_documentation')) type = 'documentation';
+    else if (filePath.includes('vdocs')) type = 'documentation';
 
     const metadata = { file: basename, type };
     const chunks = chunkMarkdown(content, metadata);
@@ -147,7 +147,7 @@ async function main() {
         if (fs.existsSync('LESSONS.md')) filesToIndex.push('LESSONS.md');
         if (fs.existsSync('ROADMAP.md')) filesToIndex.push('ROADMAP.md');
         walkDir('product_plans');
-        walkDir('product_documentation');
+        walkDir('vdocs');
         walkDir('.bounce/reports');
     } else if (targetPath) {
         const stat = fs.statSync(targetPath);

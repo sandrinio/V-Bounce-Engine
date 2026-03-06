@@ -50,7 +50,7 @@ flowchart TB
         sr["📊 Sprint Report\n.bounce/sprint-report.md"]
         sr --> human{"👤 Human\nReview"}
         human -->|Approved| release["🚀 Merge sprint → main\nTag v1.0.0"]
-        release --> docs["📖 Scribe generates\nproduct_documentation/"]
+        release --> docs["📖 Scribe generates\nvdocs/"]
         release --> archiveSprint["Archive to\n.bounce/archive/S-01/"]
     end
 

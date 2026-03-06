@@ -79,8 +79,6 @@ Risk Registry ←── ALL levels (cross-cutting input)
 | Hotfix | `templates/hotfix.md` | `product_plans/hotfixes/HOTFIX-{Date}-{Name}.md` |
 | Sprint Report | `templates/sprint_report.md` | `product_plans/sprints/sprint-{XX}/sprint-report.md` |
 
-### Product Plans Folder Structure
-
 ### Product Plans Folder Structure (State-Based)
 
 ```

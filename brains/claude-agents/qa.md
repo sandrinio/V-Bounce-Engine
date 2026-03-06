@@ -105,6 +105,12 @@ gold_plating_detected: false
 - Fixture data matches spec examples: {Yes/No}
 - API contracts match §3: {Yes/No}
 
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, RAG quality, tooling.
+
+- {e.g., "Dev report didn't specify which test runner was used — had to discover it myself"}
+- {e.g., "None"}
+
 ## Recommendation
 PASS — Ready for Architect review.
 ```
@@ -133,6 +139,12 @@ failed_scenarios:
 
 ## Gold-Plating Findings
 - {Any unnecessary additions}
+
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, RAG quality, tooling.
+
+- {e.g., "Story §2 Gherkin scenarios were ambiguous — 'valid input' not defined"}
+- {e.g., "None"}
 
 ## Recommendation
 FAIL — Returning to Developer for fixes. Bounce count: {N}/3.

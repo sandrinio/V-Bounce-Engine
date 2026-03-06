@@ -188,7 +188,7 @@ Examples:
    If unresolved questions block stories in this sprint, flag to human.
    Do NOT start bouncing stories with unresolved blocking questions.
 
-4. If product_documentation/_manifest.json exists, read it.
+4. If vdocs/_manifest.json exists, read it.
    Understand what's already documented — this informs which stories
    may require doc updates after the sprint.
 
@@ -227,7 +227,7 @@ mkdir -p .worktrees/STORY-{ID}-{StoryName}/.bounce/{tasks,reports}
 - Read the full Story spec
 - Read LESSONS.md
 - Check RISK_REGISTRY.md for risks tagged to this story or its Epic
-- If `product_documentation/_manifest.json` exists, identify docs relevant to this story's scope (match against manifest descriptions/tags). Include relevant doc references in the task file so the Developer has product context.
+- If `vdocs/_manifest.json` exists, identify docs relevant to this story's scope (match against manifest descriptions/tags). Include relevant doc references in the task file so the Developer has product context.
 - **Adjacent implementation check:** For stories that modify or extend modules touched by earlier stories in this sprint, identify existing implementations the Developer should reuse. Add to the task file: `"Reuse these existing modules: {list with file paths and brief description of what each provides}"`. This prevents agents from independently re-implementing logic that already exists — a common source of duplication when stories run in parallel.
 - Create task file in `.worktrees/STORY-{ID}-{StoryName}/.bounce/tasks/`
 - Update sprint-{XX}.md: V-Bounce State → "Bouncing"
@@ -335,10 +335,16 @@ After ALL stories are merged into `sprint/S-01`:
    - Move sprint-report.md to .bounce/archive/S-{XX}/
    - Record lessons (with user approval)
    - Update delivery_plan.md to reflect the completed sprint.
-7. Product Documentation check (runs on `main` after sprint merge):
+7. **Framework Self-Assessment** (aggregated from agent reports):
+   - Collect all `## Process Feedback` sections from agent reports in `.bounce/archive/S-{XX}/`
+   - Populate §5 Framework Self-Assessment tables in the Sprint Report by category
+   - If this is the 2nd or 3rd consecutive sprint, or if any Blocker-severity findings exist:
+     - Offer to run the `improve` skill to propose framework changes
+     - If user approves → read `skills/improve/SKILL.md` and execute the improvement process
+8. Product Documentation check (runs on `main` after sprint merge):
    - If sprint delivered 3+ features, or if any Developer report flagged
      stale product docs → offer to run vdoc to generate/update
-     product_documentation/
+     vdocs/
    - If user approves → spawn scribe subagent on `main` branch with:
      - Sprint Report (what was built)
      - Dev reports that flagged affected product docs
@@ -452,7 +458,7 @@ If merging story branch into sprint branch creates conflicts:
 - **Git tracking rules.** `.worktrees/`, `.bounce/reports/`, and `.bounce/sprint-report.md` are gitignored (ephemeral). `.bounce/archive/` is **committed to git** (permanent audit trail).
 - **Check risks before bouncing.** Read RISK_REGISTRY.md at sprint start. Flag high-severity risks that affect planned stories.
 - **Resolve open questions first.** Read the active `sprint-{XX}.md` §2 Sprint Open Questions at sprint start. Do not bounce stories with unresolved blocking questions.
-- **Know what's documented.** If `product_documentation/_manifest.json` exists, read it at sprint start. Pass relevant doc references to agents. Offer documentation updates after sprints that deliver new features.
+- **Know what's documented.** If `vdocs/_manifest.json` exists, read it at sprint start. Pass relevant doc references to agents. Offer documentation updates after sprints that deliver new features.
 
 ## Keywords
 

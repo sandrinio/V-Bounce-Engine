@@ -184,6 +184,12 @@ conflicts_detected: {true/false}
 
 ## Environment Changes
 - {New env vars, config changes, or "None"}
+
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, tooling, scripts.
+
+- {e.g., "hotfix_manager.sh sync failed silently when no worktrees existed"}
+- {e.g., "None"}
 ```
 
 ### Sprint Release Report
@@ -223,6 +229,12 @@ version: "{VERSION}"
 - [ ] Sprint branch deleted
 - [ ] Sprint report archived
 - [ ] Delivery Plan updated
+
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, tooling, scripts.
+
+- {e.g., "Sprint merge workflow assumes remote push but project has no remote configured"}
+- {e.g., "None"}
 ```
 
 ## Critical Rules

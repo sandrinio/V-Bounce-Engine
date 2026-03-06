@@ -18,7 +18,7 @@ Instead of treating your AI as a solo developer, V-Bounce OS forces distinct, sp
 
 1. **Requirements (`product_plans/`)**: The Team Lead defines standard, immutable templates (Charter, Epic, Story) before a single line of code is written.
 2. **Bounce Reports (`.bounce/`)**: During implementation, the QA and Architect agents do not edit code. They run deep codebase audits and emit structured "Bounce Reports" summarizing anti-patterns and regressions. The Developer must fix the issues and run the loop again until the code passes validation. 
-3. **Product Documentation (`product_documentation/`)**: The Scribe agent explores the *actual* codebase post-merge and uses our integrated `vdoc` tool to update feature-centric documentation and the semantic `_manifest.json` map. 
+3. **Product Documentation (`vdocs/`)**: The Scribe agent explores the *actual* codebase post-merge and uses our integrated `vdoc` tool to update feature-centric documentation and the semantic `_manifest.json` map. 
 
 The next time an agent writes code, it reads the `_manifest.json` and the `LESSONS.md` file from previous sprints. The context loop closes. Your AI writes better code because it finally understands the reality of your evolving system.
 
@@ -83,7 +83,7 @@ npx @sandrinio/vbounce install codex
 - **Templates:** Markdown templates for your Charter, Roadmap, Epics, and Stories.
 - **Bundled Scripts:** Our validation pipeline (`validate_report.mjs`) and RAG synchronization engine (`pre_bounce_sync.sh`).
 - **Autonomous RAG Setup:** The installer automatically runs `npm install` for required libraries and initializes your local LanceDB knowledge base (`.bounce/.lancedb/`).
-- **vdoc Integration:** Fully compatible with [`@sandrinio/vdoc`](https://github.com/sandrinio/vdoc) to automatically construct semantic product documentation.
+- **vdoc Integration:** The installer offers to install [`@sandrinio/vdoc`](https://github.com/sandrinio/vdoc) for your platform — enabling automatic semantic product documentation generation via the Scribe agent.
 
 ### 🧰 The Bundled Skills
 V-Bounce OS installs a powerful suite of specialized markdown `skills/` directly into your workspace. These act as modular capabilities you can invoke dynamically or that the Team Lead agent will invoke automatically during the SDLC process:
@@ -96,6 +96,7 @@ V-Bounce OS installs a powerful suite of specialized markdown `skills/` directly
 | `react-best-practices` | Developer | A strict set of frontend execution rules the Developer must follow during implementation. <mark>*(Note: This skill serves as a template and must be customized by the human according to the specific tech stack being used.)*</mark> |
 | `vibe-code-review` | QA/Architect | Runs distinct review modes (Quick Scan, Deep Audit) to validate code against Acceptance Criteria and Architecture rules. |
 | `write-skill` | Lead | Allows the Team Lead to autonomously write and deploy entirely *new* skills if the team repeatedly encounters a novel problem. |
+| `improve` | Lead | The framework's self-improvement loop. Reads agent friction signals from sprint retros and proposes targeted changes to templates, skills, brain files, and scripts — with human approval. |
 
 ---
 
@@ -122,6 +123,19 @@ When a sprint concludes, V-Bounce OS generates structured reports so human revie
 
 ### 4. Progressive Learning (`LESSONS.md`)
 Every time the AI makes a mistake during the Bounce Loop, it flags the issue. During the sprint retrospective, these mistakes are recorded in `LESSONS.md`—a permanent project memory that all agents read *before* writing any future code. **Your AI gets smarter about your specific codebase with every single sprint.**
+
+### 5. Self-Improving Framework (`improve` skill)
+V-Bounce OS doesn't just improve your code — it improves *itself*. Every agent report includes a **Process Feedback** section where agents flag friction with the framework: a template missing a critical field, a handoff that lost context, a RAG query that returned irrelevant results, or a skill instruction that was unclear.
+
+These signals are aggregated into the Sprint Report's **Framework Self-Assessment** — categorized by area (Templates, Handoffs, RAG Pipeline, Skills, Process Flow, Tooling) with severity ratings and suggested fixes.
+
+After every 2-3 sprints, the Team Lead runs the `improve` skill which:
+1. Reads accumulated friction signals across sprints
+2. Identifies recurring patterns (same complaint from multiple agents = real problem)
+3. Proposes specific, targeted changes to templates, skills, brain files, or scripts
+4. **Applies nothing without your approval** — you review every proposed change
+
+The result: templates get sharper, handoffs get cleaner, skills get more precise, and the bounce loop gets tighter — all driven by the agents who actually use the framework every day.
 
 ---
 

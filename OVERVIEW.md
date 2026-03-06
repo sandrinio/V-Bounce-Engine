@@ -194,6 +194,6 @@ A **delivery = a Roadmap release**. It contains one or more sprints. When all sp
 | Scripts | `scripts/*.sh` (Automations like `hotfix_manager.sh`) |
 | Planning documents | `product_plans/` |
 | Sprint history (committed) | `.bounce/archive/` |
-| Product documentation | `product_documentation/` |
+| Product documentation | `vdocs/` |
 | Detailed diagrams | `diagrams/*.mermaid` |
 | Edge Cases & Reference | `docs/HOTFIX_EDGE_CASES.md`, etc. |

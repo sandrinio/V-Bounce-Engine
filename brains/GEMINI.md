@@ -23,6 +23,7 @@ For Antigravity: copy skills to `.agents/skills/` for workspace-scoped discovery
 | `skills/react-best-practices/` | Frontend coding patterns and anti-patterns | Developer |
 | `skills/vibe-code-review/` | Code quality review (4 modes) | QA, Architect |
 | `skills/write-skill/` | Creating and refining agent skills | Team Lead |
+| `skills/improve/` | Framework self-improvement from agent feedback | Team Lead |
 
 ## The V-Bounce Process
 
@@ -40,8 +41,8 @@ Before starting any sprint, the Team Lead MUST:
   - Fast Track (L1/L2 Minor): dev → devops only (skip QA/Arch gates).
 - **Dependency Check**: Stories with `Depends On:` must execute sequentially. Wait for DevOps merge of Story A before starting Story B.
 - Read RISK_REGISTRY.md — flag high-severity risks that affect planned stories.
-- Read ACTIVE_SPRINT.md §3 Open Questions — do not bounce stories with unresolved blocking questions.
-- If `product_documentation/_manifest.json` exists, read it.
+- Read `sprint-{XX}.md` §2 Sprint Open Questions — do not bounce stories with unresolved blocking questions.
+- If `vdocs/_manifest.json` exists, read it.
 - **Strategic Freeze**: Charter and Roadmap are frozen during sprints. If emergency changes are needed, run the **Impact Analysis Protocol**: Evaluate sprint stories against new strategy. Pause work until human approval.
 
 ### Phase 2: The Bounce (Implementation)
@@ -65,7 +66,7 @@ Before starting any sprint, the Team Lead MUST:
 
 ### Phase 3: Review
 Sprint Report → Human review → Delivery Plan updated → Lessons recorded → Next sprint.
-If sprint delivered new features or Dev reports flagged stale product docs → spawn Scribe agent to generate/update product_documentation/ via vdoc.
+If sprint delivered new features or Dev reports flagged stale product docs → spawn Scribe agent to generate/update vdocs/ via vdoc.
 
 ## Story States
 
@@ -132,7 +133,7 @@ Planning docs live in `product_plans/`. It uses a state-based architecture (`str
 | Epic | `product_plans/backlog/EPIC-{NNN}_{name}/EPIC-{NNN}.md` |
 | Story | `product_plans/backlog/EPIC-{NNN}_{name}/STORY-{EpicID}-{StoryID}-{StoryName}.md` |
 | Sprint Report | `product_plans/sprints/sprint-{XX}/sprint-report.md` |
-| Product Docs | `product_documentation/*.md` + `_manifest.json` |
+| Product Docs | `vdocs/*.md` + `_manifest.json` |
 
 ## Report Formats
 

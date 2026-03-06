@@ -19,7 +19,9 @@ All in `product_plans/`. Uses a state-based architecture (`strategy/`, `backlog/
 | Sprint Plan | `product_plans/sprints/sprint-{XX}/sprint-{XX}.md` |
 | Epic | `product_plans/backlog/EPIC-{NNN}_{name}/EPIC-{NNN}.md` |
 | Story | `product_plans/backlog/EPIC-{NNN}_{name}/STORY-{EpicID}-{StoryID}-{StoryName}.md` |
-| Product Docs | `product_documentation/*.md` + `_manifest.json` |
+| Hotfix | `product_plans/hotfixes/HOTFIX-{Date}-{Name}.md` |
+| Sprint Report | `product_plans/sprints/sprint-{XX}/sprint-report.md` |
+| Product Docs | `vdocs/*.md` + `_manifest.json` |
 
 ## Skills Reference
 
@@ -31,6 +33,7 @@ All in `product_plans/`. Uses a state-based architecture (`strategy/`, `backlog/
 | react-best-practices | `skills/react-best-practices/` | Developer |
 | vibe-code-review | `skills/vibe-code-review/` | QA, Architect |
 | write-skill | `skills/write-skill/` | Team Lead |
+| improve | `skills/improve/` | Team Lead |
 
 ## Report Formats
 

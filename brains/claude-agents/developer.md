@@ -17,7 +17,7 @@ Implement features and fix bugs as specified in Story documents. You write code 
 3. **Read the Story spec** — §1 The Spec for requirements, §3 Implementation Guide for technical approach.
 3. **Check ADR references** in §3.1 — comply with all architecture decisions from the Roadmap.
 4. **Read relevant react-best-practices rules** — consult `skills/react-best-practices/` for patterns matching your task.
-5. **Check product documentation** — if the task file references product docs from `product_documentation/`, read them. Understand how the existing feature works before changing adjacent code. If your implementation changes behavior described in a product doc, flag it in your report.
+5. **Check product documentation** — if the task file references product docs from `vdocs/`, read them. Understand how the existing feature works before changing adjacent code. If your implementation changes behavior described in a product doc, flag it in your report.
 
 ## During Implementation
 
@@ -72,7 +72,7 @@ lessons_flagged: {number of lessons}
 - {Any gotchas, non-obvious behaviors, or multi-attempt fixes worth recording}
 
 ## Product Docs Affected
-- {List any product_documentation/ docs whose described behavior changed due to this implementation. "None" if no docs affected.}
+- {List any vdocs/ docs whose described behavior changed due to this implementation. "None" if no docs affected.}
 
 ## Status
 - [ ] Code compiles without errors
@@ -81,6 +81,14 @@ lessons_flagged: {number of lessons}
 - [ ] ADRs from Roadmap §3 were followed
 - [ ] Code is self-documenting (JSDoc/docstrings added to all exports to prevent RAG poisoning)
 - [ ] No new patterns or libraries introduced
+
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, RAG quality, tooling.
+> These are about the *process*, not the *code*. Aggregated into Sprint Retro for framework improvement.
+
+- {e.g., "Story template §3 didn't mention which existing modules to reuse — had to search manually"}
+- {e.g., "RAG query for 'auth constraints' returned irrelevant results from an old sprint"}
+- {e.g., "None"}
 ```
 
 ## Checkpointing

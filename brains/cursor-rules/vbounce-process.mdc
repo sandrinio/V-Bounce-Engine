@@ -15,13 +15,14 @@ Documents are created in strict hierarchy — no level can be skipped:
 Charter (why) → Roadmap (strategic what/when) → Epic (detailed what) → Story (how) → Delivery Plan (execution) → Risk Registry (risks)
 
 ### Pre-Bounce Checks
-Before sprints: Lead triages request (L1 Trivial → Hotfix Path. L2-L4 → Epic Path). Lead reads RISK_REGISTRY.md (flag blocking risks), DELIVERY_PLAN.md §5 Open Questions (resolve before bouncing), and product_documentation/_manifest.json (know what's documented).
+Before sprints: Lead triages request (L1 Trivial → Hotfix Path. L2-L4 → Epic Path). Determines Execution Mode (Full Bounce vs Fast Track). Enforces sequential dependency order for stories with `Depends On:`. Reads RISK_REGISTRY.md (flag blocking risks), `sprint-{XX}.md` §2 Sprint Open Questions (resolve before bouncing), and vdocs/_manifest.json (know what's documented). Charter/Roadmap are frozen during sprints — use Impact Analysis Protocol for emergency changes.
 
 ### Phase 2: The Bounce (Implementation)
 **Standard Path (L2-L4):**
+0. Team Lead runs `./scripts/pre_bounce_sync.sh` to ensure LanceDB RAG context is fresh.
 1. Team Lead sends Story context pack to Developer.
-2. Developer reads LESSONS.md, implements code, writes Implementation Report.
-3. QA validates against Story §2 The Truth. If fail → Bug Report to Dev.
+2. Developer reads LESSONS.md, implements code, writes Implementation Report. CLI Orchestrator must run `./scripts/validate_report.mjs` on the report to enforce YAML strictness.
+3. QA validates against Story §2 The Truth. If fail → Bug Report to Dev. CLI Orchestrator must run `./scripts/validate_report.mjs` on the QA report before passing to Architect/Dev.
 4. Dev fixes and resubmits. 3+ failures → Escalated.
 5. Architect validates Safe Zone compliance and ADR adherence.
 6. DevOps merges story into sprint branch, validates, handles releases.
@@ -36,7 +37,7 @@ Before sprints: Lead triages request (L1 Trivial → Hotfix Path. L2-L4 → Epic
 6. DevOps (or Team Lead) runs `./scripts/hotfix_manager.sh sync` to update active worktrees.
 
 ### Phase 3: Review
-Sprint Report → Human review → Delivery Plan updated → Lessons recorded. If new features delivered → spawn Scribe agent to generate/update product_documentation/.
+Sprint Report → Human review → Delivery Plan updated → Lessons recorded. If new features delivered → spawn Scribe agent to generate/update vdocs/.
 
 ### Story States
 Draft → Refinement → Ready to Bounce → Bouncing → QA Passed → Architect Passed → Sprint Review → Done

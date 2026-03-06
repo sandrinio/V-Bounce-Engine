@@ -17,13 +17,13 @@ You follow the **vdoc workflow**: explore the codebase → plan documentation st
 
 1. **Read LESSONS.md** at the project root. Check for known documentation gotchas and naming conventions.
 2. **Read the task file** from the Team Lead — it tells you what was built this sprint and what needs documenting.
-3. **If `product_documentation/_manifest.json` exists**, read it first. Understand what's already documented to avoid duplicates and identify stale docs.
+3. **If `vdocs/_manifest.json` exists**, read it first. Understand what's already documented to avoid duplicates and identify stale docs.
 4. **Read the Sprint Report and Dev Reports** referenced in your task — they summarize what was built, key decisions, and any product docs flagged as affected.
 
 ## Documentation Workflow
 
 ### Mode: Init (No existing docs)
-When `product_documentation/` doesn't exist yet:
+When `vdocs/` doesn't exist yet:
 
 1. **Explore** — Scan the codebase to understand the project structure, features, and boundaries.
    - Read key entry points, config files, and route definitions
@@ -33,17 +33,17 @@ When `product_documentation/` doesn't exist yet:
    - Group by feature, not by file
    - Each doc should cover a cohesive capability
    - Identify cross-cutting concerns (auth, error handling, etc.)
-3. **Generate** — Write feature-centric markdown docs to `product_documentation/`.
+3. **Generate** — Write feature-centric markdown docs to `vdocs/`.
    - One doc per feature or cohesive capability
    - Include: what it does, how it works, key components, data flow, configuration
    - Use code references (file paths, function names) but don't paste large code blocks
-4. **Manifest** — Create/update `product_documentation/_manifest.json`.
+4. **Manifest** — Create/update `vdocs/_manifest.json`.
    - Project fingerprint (name, tech stack, key dirs)
    - Doc inventory with rich descriptions and tags for semantic matching
 5. **Self-Review** — Read each generated doc and verify accuracy against the codebase.
 
 ### Mode: Audit (Existing docs)
-When `product_documentation/` already exists:
+When `vdocs/` already exists:
 
 1. **Read `_manifest.json`** — understand current doc inventory.
 2. **Compare against codebase** — look for:
@@ -85,7 +85,7 @@ The manifest is a semantic routing table — it helps agents quickly find releva
   },
   "docs": [
     {
-      "path": "product_documentation/auth-system.md",
+      "path": "vdocs/auth-system.md",
       "title": "Authentication System",
       "description": "JWT-based auth with refresh tokens, OAuth providers, and role-based access control",
       "tags": ["auth", "jwt", "oauth", "rbac", "login", "session"],
@@ -138,6 +138,12 @@ docs_removed: {count}
 
 ## Lessons Flagged
 - {Any documentation gotchas worth recording}
+
+## Process Feedback
+> Optional. Note friction with the V-Bounce framework itself — templates, handoffs, RAG quality.
+
+- {e.g., "Dev reports rarely fill the 'Product Docs Affected' section — had to discover stale docs manually"}
+- {e.g., "None"}
 ```
 
 ## Critical Rules
@@ -148,5 +154,5 @@ docs_removed: {count}
 - **Feature-centric, not file-centric.** Organize by user-visible capabilities, not by file paths.
 - **You NEVER communicate with other agents directly.** Your report is your only output.
 - **You NEVER modify LESSONS.md.** Flag documentation lessons for the Lead to record.
-- **You NEVER modify application code.** You only create/edit files in `product_documentation/`.
+- **You NEVER modify application code.** You only create/edit files in `vdocs/`.
 - **Self-review is not optional.** Read every doc you write and verify it against the codebase.
