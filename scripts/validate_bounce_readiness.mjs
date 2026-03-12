@@ -102,6 +102,33 @@ if (!fs.existsSync(worktreeDir)) {
   warnings.push(`.worktrees/${storyId}/ not found — create with: git worktree add .worktrees/${storyId} -b story/${storyId} sprint/S-XX`);
 }
 
+// 5. vdoc impact check (warning only — never blocks bounce)
+const manifestPath = path.join(ROOT, 'vdocs', '_manifest.json');
+if (fs.existsSync(manifestPath) && storyFile) {
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    const docs = manifest.documentation || [];
+    const storyLower = fs.readFileSync(storyFile, 'utf8').toLowerCase();
+
+    // Extract file paths mentioned in the story
+    const storyFileRefs = storyLower.match(/(?:src|lib|app|pages|components|api|services|scripts)\/[^\s,)'"]+/g) || [];
+
+    for (const doc of docs) {
+      const docKeyFiles = (doc.keyFiles || []).map(f => f.toLowerCase());
+      const overlap = docKeyFiles.filter(kf =>
+        storyFileRefs.some(sf => sf.includes(kf) || kf.includes(sf))
+      );
+      if (overlap.length > 0) {
+        warnings.push(`vdoc impact: ${doc.filepath} — key files overlap with story scope (${overlap.slice(0, 3).join(', ')}). Doc may need updating post-sprint.`);
+        const deps = doc.deps || [];
+        if (deps.length > 0) {
+          warnings.push(`  ↳ Blast radius: ${deps.join(', ')} may also be affected`);
+        }
+      }
+    }
+  } catch { /* skip on manifest parse error */ }
+}
+
 // Print results
 console.log(`Bounce readiness check: ${storyId}`);
 console.log('');

@@ -13,6 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 import yaml from 'js-yaml';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -96,7 +97,23 @@ const filesModified = Array.isArray(devFm.files_modified)
   ? devFm.files_modified.map(f => `- ${f}`).join('\n')
   : '_Not specified in dev report_';
 
-// 5. Assemble context pack
+// 5. vdoc context (optional — graceful skip if no manifest)
+let vdocSection = '';
+const vdocMatchScript = path.join(__dirname, 'vdoc_match.mjs');
+if (fs.existsSync(vdocMatchScript) && fs.existsSync(path.join(ROOT, 'vdocs', '_manifest.json'))) {
+  try {
+    const modifiedFiles = Array.isArray(devFm.files_modified) ? devFm.files_modified.join(',') : '';
+    const vdocArgs = [`--story`, storyId];
+    if (modifiedFiles) vdocArgs.push('--files', modifiedFiles);
+    vdocArgs.push('--context');
+    const vdocOutput = execSync(`node "${vdocMatchScript}" ${vdocArgs.map(a => `"${a}"`).join(' ')}`, { cwd: ROOT, encoding: 'utf8', timeout: 10000 }).trim();
+    if (vdocOutput && !vdocOutput.includes('No vdoc matches')) {
+      vdocSection = vdocOutput;
+    }
+  } catch { /* vdoc matching failed — skip silently */ }
+}
+
+// 6. Assemble context pack
 const lines = [
   `# QA Context: ${storyId}`,
   `> Generated: ${new Date().toISOString().split('T')[0]}`,
@@ -117,6 +134,7 @@ const lines = [
   `## Files Modified`,
   filesModified,
   '',
+  ...(vdocSection ? [vdocSection, ''] : []),
   `## Relevant Lessons`,
   lessonsExcerpt,
 ];

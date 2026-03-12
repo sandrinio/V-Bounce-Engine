@@ -359,17 +359,24 @@ After ALL stories are merged into `sprint/S-01`:
      - Offer to run the `improve` skill to propose framework changes
      - If user approves → read `skills/improve/SKILL.md` and execute the improvement process
 8. Product Documentation check (runs on `main` after sprint merge):
-   - If sprint delivered 3+ features, or if any Developer report flagged
-     stale product docs → offer to run vdoc to generate/update
-     vdocs/
-   - If user approves → spawn scribe subagent on `main` branch with:
-     - Sprint Report (what was built)
-     - Dev reports that flagged affected product docs
-     - Current _manifest.json (if exists)
-     - Mode: "audit" (if docs exist) or "init" (if first time)
-   - Scribe generates/updates docs and writes Scribe Report
-   - Documentation is post-implementation — it reflects what was built
-   - Scribe commits documentation as a follow-up commit on `main`
+   a. **Staleness Detection** — run `./scripts/vdoc_staleness.mjs S-{XX}`
+      - Cross-references all Dev Reports' `files_modified` against manifest key files
+      - Generates `.bounce/scribe-task-S-{XX}.md` with targeted list of stale docs
+      - Populates Sprint Report §1 "Product Docs Affected" table
+      - If no `vdocs/_manifest.json` exists → skip silently (graceful no-op)
+   b. **Scribe Task Decision:**
+      - If staleness detection found stale docs → offer targeted Scribe task
+      - If sprint delivered 3+ features and no vdocs exist → offer vdoc init
+      - If any Developer report flagged stale product docs → offer Scribe update
+   c. If user approves → spawn scribe subagent on `main` branch with:
+      - `.bounce/scribe-task-S-{XX}.md` (targeted task — when available)
+      - Sprint Report (what was built)
+      - Dev reports that flagged affected product docs
+      - Current _manifest.json (if exists)
+      - Mode: "audit" (if docs exist) or "init" (if first time)
+   d. Scribe generates/updates docs and writes Scribe Report
+      - Documentation is post-implementation — it reflects what was built
+      - Scribe commits documentation as a follow-up commit on `main`
 ```
 
 ---

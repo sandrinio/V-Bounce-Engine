@@ -13,6 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -75,7 +76,28 @@ const storyRows = Object.entries(state.stories || {})
   .map(([id, s]) => `| ${id} | ${s.state} | ${s.qa_bounces} | ${s.arch_bounces} | ${s.worktree || '—'} |`)
   .join('\n');
 
-// 6. Assemble context pack
+// 6. vdoc summary (optional — graceful skip if no manifest)
+let vdocSummary = '';
+const manifestPath = path.join(ROOT, 'vdocs', '_manifest.json');
+if (fs.existsSync(manifestPath)) {
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    const docCount = (manifest.documentation || []).length;
+    const docList = (manifest.documentation || []).slice(0, 10)
+      .map(d => `| ${d.filepath} | ${d.title} | ${(d.tags || []).slice(0, 4).join(', ')} | ${(d.deps || []).join(', ') || '—'} |`)
+      .join('\n');
+    vdocSummary = [
+      `## Product Documentation (vdoc)`,
+      `> ${docCount} feature doc(s) available in vdocs/`,
+      '',
+      `| Doc | Title | Tags | Dependencies |`,
+      `|-----|-------|------|-------------|`,
+      docList,
+    ].join('\n');
+  } catch { /* skip on parse error */ }
+}
+
+// 7. Assemble context pack
 const lines = [
   `# Sprint Context: ${sprintId}`,
   `> Generated: ${new Date().toISOString().split('T')[0]} | Sprint: ${sprintId} | Delivery: ${state.delivery_id}`,
@@ -91,6 +113,7 @@ const lines = [
   `|-------|-------|------------|--------------|----------|`,
   storyRows || '| (no stories) | — | — | — | — |',
   '',
+  ...(vdocSummary ? [vdocSummary, ''] : []),
   `## Relevant Lessons`,
   lessonsExcerpt,
   '',

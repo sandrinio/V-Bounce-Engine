@@ -54,9 +54,13 @@ delivery_plan_ref: "product_plans/{delivery}/DELIVERY_PLAN.md"
 - {e.g., "STORY-001-03-email_notifications — Escalated (template integration failed 3x)"}
 
 ### Product Docs Affected
-> Any product documentation files modified, created, or identified for updates. Handed off to Scribe agent.
+> Auto-populated from staleness detection (`vbounce docs check S-{XX}`). Shows which vdocs were impacted by this sprint's code changes. Scribe agent receives a targeted task from `.bounce/scribe-task-S-{XX}.md`.
 
-- {e.g., "vdocs/api_reference.md — Added rate limiting details"}
+| Doc | Stale Key Files | Touched By | Priority | Scribe Action |
+|-----|----------------|------------|----------|---------------|
+| {e.g., `AUTHENTICATION_DOC.md`} | {e.g., `src/auth/index.ts`} | {e.g., `STORY-001-02`} | {HIGH/MEDIUM/LOW} | {Update / Quality Fix / New} |
+
+> If no `vdocs/_manifest.json` exists, write "N/A — vdoc not installed".
 
 ---
 

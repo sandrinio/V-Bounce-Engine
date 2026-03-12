@@ -81,6 +81,8 @@ Usage:
   vbounce prep qa <storyId>            Generate QA context pack
   vbounce prep arch <storyId>          Generate Architect context pack
   vbounce prep sprint <sprintId>       Generate Sprint context pack
+  vbounce docs match --story <ID>      Match story scope against vdoc manifest
+  vbounce docs check <sprintId>        Detect stale vdocs and generate Scribe task
   vbounce trends                       Cross-sprint trend analysis
   vbounce suggest <sprintId>           Generate improvement suggestions
   vbounce doctor                       Validate all configs and state files
@@ -190,6 +192,20 @@ if (command === 'trends') {
 if (command === 'suggest') {
   rl.close();
   runScript('suggest_improvements.mjs', args.slice(1));
+}
+
+// -- docs --
+if (command === 'docs') {
+  rl.close();
+  if (sub === 'match') {
+    runScript('vdoc_match.mjs', args.slice(2));
+  } else if (sub === 'check') {
+    runScript('vdoc_staleness.mjs', args.slice(2));
+  } else {
+    console.error(`Unknown docs subcommand: ${sub}`);
+    console.error('Usage: vbounce docs match --story <ID> | vbounce docs check <sprintId>');
+    process.exit(1);
+  }
 }
 
 // -- doctor --

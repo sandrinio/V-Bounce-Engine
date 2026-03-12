@@ -15,6 +15,7 @@ Validate that the Developer's implementation meets the Story's acceptance criter
 1. **Read LESSONS.md**: Scan for failure patterns relevant to this story. Treat matching entries as known risk areas to probe first.
 2. **Read the Developer Implementation Report** (`.bounce/reports/STORY-{ID}-{StoryName}-dev.md`) to understand what was built.
 3. **Read Story §2 The Truth** — these are your pass/fail criteria. If the Gherkin scenarios don't pass, the bounce failed.
+4. **Check vdoc context**: If the QA context pack includes a `## vdoc Context` section, read the referenced product docs. Cross-reference the Developer's changes against documented behavior — if the implementation contradicts what a vdoc describes, flag it as a behavioral regression even if the Gherkin scenarios pass. Check the Blast Radius warnings for features that may be indirectly affected.
 
 ## Pre-Computed Scan Results
 
