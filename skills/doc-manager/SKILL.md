@@ -1,13 +1,13 @@
 ---
 name: doc-manager
-description: "Use when creating, modifying, or navigating V-Bounce OS planning documents. Trigger on any request to create a charter, roadmap, epic, story, delivery plan, or risk registry — or when the user asks to update, refine, decompose, or transition documents between phases. Also trigger when an agent needs to know which template to use, where a document fits in the hierarchy, or what upstream/downstream documents to read before writing. This skill manages the full document lifecycle from Charter through Sprint execution."
+description: "Use when creating, modifying, or navigating V-Bounce Engine planning documents. Trigger on any request to create a charter, roadmap, epic, story, delivery plan, or risk registry — or when the user asks to update, refine, decompose, or transition documents between phases. Also trigger when an agent needs to know which template to use, where a document fits in the hierarchy, or what upstream/downstream documents to read before writing. This skill manages the full document lifecycle from Charter through Sprint execution."
 ---
 
 # Document Hierarchy Manager
 
 ## Purpose
 
-This skill is the navigation system for V-Bounce OS planning documents. It knows the full document hierarchy, what each template contains, where to find templates, and the rules for creating, modifying, and transitioning documents between phases.
+This skill is the navigation system for V-Bounce Engine planning documents. It knows the full document hierarchy, what each template contains, where to find templates, and the rules for creating, modifying, and transitioning documents between phases.
 
 **Core principle:** No document exists in isolation. Every document inherits context from upstream and feeds downstream consumers. YOU MUST read upstream documents before creating any new document.
 
@@ -120,10 +120,10 @@ product_plans/
 - `sprints/` contains active 1-week execution boundaries. A Story file physically moves here when a sprint begins.
 - `archive/` is where finished Sprints and finished Epics are moved for permanent record keeping.
 
-### V-Bounce OS Framework Structure
+### V-Bounce Engine Framework Structure
 
 ```
-V-Bounce OS/
+V-Bounce Engine/
 ├── brains/          — Agent brain files for each AI coding tool
 │   ├── CLAUDE.md        — Claude Code brain
 │   ├── AGENTS.md        — Codex CLI brain
@@ -148,7 +148,7 @@ When initializing a new project, deploy the correct brain file for the AI coding
 | Gemini CLI | `brains/GEMINI.md` | Project root as `GEMINI.md` |
 | Antigravity | `brains/GEMINI.md` | Project root + copy `skills/` to `.agents/skills/` |
 
-Brain files contain the V-Bounce process, critical rules, and skill references. Each tool's brain file is self-contained and authoritative. When updating V-Bounce OS rules, update each brain file directly and keep them in sync.
+Brain files contain the V-Bounce process, critical rules, and skill references. Each tool's brain file is self-contained and authoritative. When updating V-Bounce Engine rules, update each brain file directly and keep them in sync.
 
 ## Document Operations
 

@@ -63,7 +63,7 @@ const EXPECTED_PROMPT_SIGNATURES = {
 
 function main() {
     console.log("===========================================");
-    console.log(" V-Bounce OS: Framework Integrity Check");
+    console.log(" V-Bounce Engine: Framework Integrity Check");
     console.log("===========================================\n");
 
     let hasErrors = false;

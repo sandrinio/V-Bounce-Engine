@@ -6,7 +6,7 @@
 
 I've been vibecoding for a while now and kept running into the same problem — AI writes code fast, but without structure you end up with spaghetti. No reviews, no architecture checks, no audit trail. Every sprint felt like starting from scratch because there was no continuous improvement loop.
 
-So I built a framework around it. I'm calling it V-Bounce OS, inspired by Cory Hymel's theory on structured AI development.
+So I built a framework around it. I'm calling it V-Bounce Engine, inspired by Cory Hymel's theory on structured AI development.
 
 **The core idea:** What if you applied Scrum's transparency and continuous improvement to vibecoding — but let AI agents play the roles?
 
@@ -34,6 +34,6 @@ Here's how it works:
 **What's still missing:**
 I haven't figured out how to connect web design tools into the requirements phase yet. Right now the framework handles code and architecture well, but the design-to-spec pipeline (Figma → agent-readable requirements, for example) is an open problem. If anyone has ideas on bridging that gap, I'd love to hear them.
 
-It's MIT licensed and works with Claude, Cursor, Gemini, Copilot, and Codex. If anyone wants to try it or poke holes in the approach, the repo is here: https://github.com/sandrinio/V-Bounce-OS
+It's MIT licensed and works with Claude, Cursor, Gemini, Copilot, and Codex. If anyone wants to try it or poke holes in the approach, the repo is here: https://github.com/sandrinio/V-Bounce-Engine
 
 Happy to answer questions about the design decisions.

@@ -1,10 +1,10 @@
 ---
-description: V-Bounce OS critical rules — mandatory constraints for all implementation work
+description: V-Bounce Engine critical rules — mandatory constraints for all implementation work
 globs:
 alwaysApply: true
 ---
 
-# V-Bounce OS — Critical Rules
+# V-Bounce Engine — Critical Rules
 
 ## Before Writing Code
 1. **Read LESSONS.md** at the project root. Every time. No exceptions.

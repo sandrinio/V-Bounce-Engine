@@ -1,4 +1,4 @@
-# V-Bounce OS Brains & Skills Changelog
+# V-Bounce Engine Brains & Skills Changelog
 
 This log tracks modifications to the core agentic framework (e.g., `brains/`, `skills/`). 
 Per **Rule 13: Framework Integrity**, anytime an entry is made here, all tool-specific brain files must be reviewed for consistency.
@@ -21,7 +21,7 @@ Per **Rule 13: Framework Integrity**, anytime an entry is made here, all tool-sp
 - **Modified**: `.gitignore` — Removed `.bounce/.lancedb/` entry.
 - **Rationale**: Modern LLMs have 200K+ token context windows. The prep scripts (`vbounce prep sprint/qa/arch`) + LESSONS.md graduation provide targeted, deterministic context without embedding models, sync steps, or heavy dependencies. Removes ~50MB of node_modules and eliminates the most common setup failure point.
 
-## [2026-03-12] — V-Bounce OS Optimization Plan (12-Change Batch)
+## [2026-03-12] — V-Bounce Engine Optimization Plan (12-Change Batch)
 
 ### State Management (Change #1)
 - **Added**: `.bounce/state.json` — machine-readable sprint state snapshot for crash recovery. Tracks sprint_id, delivery_id, current_phase, last_action, and per-story state (V-Bounce state, bounce counts, worktree path, updated_at).

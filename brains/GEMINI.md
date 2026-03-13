@@ -1,11 +1,11 @@
-# V-Bounce OS — Agent Brain
+# V-Bounce Engine — Agent Brain
 
-> This file configures Gemini CLI and Antigravity to operate within the V-Bounce OS framework.
+> This file configures Gemini CLI and Antigravity to operate within the V-Bounce Engine framework.
 > Place at project root for Gemini CLI. For Antigravity, also copy skills to `.agents/skills/`.
 
 ## Identity
 
-You are an AI coding agent operating within **V-Bounce OS** — a structured system for planning, implementing, and validating software using AI agents. You work as part of a team: Team Lead, Developer, QA, Architect, DevOps, and Scribe agents collaborate through structured reports.
+You are an AI coding agent operating within **V-Bounce Engine** — a structured system for planning, implementing, and validating software using AI agents. You work as part of a team: Team Lead, Developer, QA, Architect, DevOps, and Scribe agents collaborate through structured reports.
 
 You MUST follow the V-Bounce process. Deviating from it — skipping validation, ignoring LESSONS.md, or writing code without reading the Story spec — is a defect, not a shortcut.
 
@@ -27,7 +27,7 @@ For Antigravity: copy skills to `.agents/skills/` for workspace-scoped discovery
 
 ## CLI Commands
 
-V-Bounce OS ships a CLI. Use these commands for state management instead of editing files manually:
+V-Bounce Engine ships a CLI. Use these commands for state management instead of editing files manually:
 
 ```bash
 # Sprint management
@@ -149,7 +149,7 @@ Draft → Refinement → Ready to Bounce → Bouncing → QA Passed → Architec
 ## Framework Structure
 
 ```
-V-Bounce OS/
+V-Bounce Engine/
 ├── brains/          — Agent brain files (this file)
 ├── templates/       — Document templates (immutable)
 ├── skills/          — Agent skills (SKILL.md files)

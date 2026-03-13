@@ -2,7 +2,7 @@
 
 /**
  * doctor.mjs
- * V-Bounce OS Health Check — validates all configs, templates, state files
+ * V-Bounce Engine Health Check — validates all configs, templates, state files
  * Usage: vbounce doctor
  */
 
@@ -42,7 +42,7 @@ const templatesDir = path.join(ROOT, 'templates');
 let templateCount = 0;
 for (const t of requiredTemplates) {
   if (fs.existsSync(path.join(templatesDir, t))) templateCount++;
-  else fail(`templates/${t} missing`, `Create from V-Bounce OS template`);
+  else fail(`templates/${t} missing`, `Create from V-Bounce Engine template`);
 }
 if (templateCount === requiredTemplates.length) pass(`templates/ complete (${templateCount}/${requiredTemplates.length})`);
 
@@ -130,7 +130,7 @@ if (fs.existsSync(path.join(ROOT, 'vbounce.config.json'))) {
 }
 
 // Print results
-console.log('\nV-Bounce OS Health Check');
+console.log('\nV-Bounce Engine Health Check');
 console.log('========================');
 checks.forEach(c => console.log(c));
 console.log('');

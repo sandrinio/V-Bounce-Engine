@@ -164,7 +164,7 @@ flowchart LR
 ---
 
 ## 9. References
-- V-Bounce Framework repo: https://github.com/sandrinio/V-Bounce-OS
+- V-Bounce Framework repo: https://github.com/sandrinio/V-Bounce-Engine
 - V-Bounce Framework npm: https://www.npmjs.com/package/@sandrinio/vbounce
 - Cory Hymel's theory on structured AI development (inspiration)
 - MCP Protocol specification: https://modelcontextprotocol.io

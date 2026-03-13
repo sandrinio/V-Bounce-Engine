@@ -1,13 +1,13 @@
-# Adding V-Bounce OS to Any Repo
+# Adding V-Bounce Engine to Any Repo
 
-Step-by-step guide to set up V-Bounce OS in an existing or new project.
+Step-by-step guide to set up V-Bounce Engine in an existing or new project.
 
 ## Prerequisites
 
-- A git repository (V-Bounce OS uses branches and worktrees)
+- A git repository (V-Bounce Engine uses branches and worktrees)
 - Node.js installed (for validation and semantic search scripts)
 - At least one supported AI coding tool installed
-- The V-Bounce OS folder (this repo)
+- The V-Bounce Engine folder (this repo)
 
 ## Step 1: Copy the Framework
 
@@ -15,11 +15,11 @@ Copy the `skills/` and `templates/` directories into your project root:
 
 ```bash
 # From your project root
-cp -r /path/to/V-Bounce-OS/skills/ ./skills/
-cp -r /path/to/V-Bounce-OS/templates/ ./templates/
+cp -r /path/to/V-Bounce-Engine/skills/ ./skills/
+cp -r /path/to/V-Bounce-Engine/templates/ ./templates/
 ```
 
-These are the core of V-Bounce OS — skills define agent behavior, templates define document structure.
+These are the core of V-Bounce Engine — skills define agent behavior, templates define document structure.
 
 ## Step 2: Deploy Brain File for Your AI Tool
 
@@ -27,32 +27,32 @@ Pick the tool you're using and deploy the corresponding brain file:
 
 ### Claude Code
 ```bash
-cp /path/to/V-Bounce-OS/brains/CLAUDE.md ./CLAUDE.md
+cp /path/to/V-Bounce-Engine/brains/CLAUDE.md ./CLAUDE.md
 
 # Deploy subagent configs
 mkdir -p .claude/agents
-cp /path/to/V-Bounce-OS/brains/claude-agents/*.md .claude/agents/
+cp /path/to/V-Bounce-Engine/brains/claude-agents/*.md .claude/agents/
 ```
 
 ### Codex CLI (OpenAI)
 ```bash
-cp /path/to/V-Bounce-OS/brains/AGENTS.md ./AGENTS.md
+cp /path/to/V-Bounce-Engine/brains/AGENTS.md ./AGENTS.md
 ```
 
 ### Cursor
 ```bash
 mkdir -p .cursor/rules
-cp /path/to/V-Bounce-OS/brains/cursor-rules/*.mdc .cursor/rules/
+cp /path/to/V-Bounce-Engine/brains/cursor-rules/*.mdc .cursor/rules/
 ```
 
 ### Gemini CLI
 ```bash
-cp /path/to/V-Bounce-OS/brains/GEMINI.md ./GEMINI.md
+cp /path/to/V-Bounce-Engine/brains/GEMINI.md ./GEMINI.md
 ```
 
 ### Antigravity
 ```bash
-cp /path/to/V-Bounce-OS/brains/GEMINI.md ./GEMINI.md
+cp /path/to/V-Bounce-Engine/brains/GEMINI.md ./GEMINI.md
 cp -r skills/ .agents/skills/
 ```
 
@@ -141,7 +141,7 @@ your-project/
 ├── CLAUDE.md                  ← brain file (or AGENTS.md / GEMINI.md)
 ├── LESSONS.md                 ← project-specific rules (grows over time)
 ├── .claude/agents/            ← subagent configs (Claude Code only)
-├── skills/                    ← V-Bounce OS skills
+├── skills/                    ← V-Bounce Engine skills
 │   ├── agent-team/
 │   ├── doc-manager/
 │   ├── lesson/
@@ -192,4 +192,4 @@ brains/
     └── vbounce-docs.mdc
 ```
 
-Each brain file is self-contained and authoritative for its tool. When updating V-Bounce OS rules, update each brain file directly and keep them in sync.
+Each brain file is self-contained and authoritative for its tool. When updating V-Bounce Engine rules, update each brain file directly and keep them in sync.

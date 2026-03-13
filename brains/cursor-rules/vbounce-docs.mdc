@@ -1,10 +1,10 @@
 ---
-description: V-Bounce OS document hierarchy — templates, locations, and report formats
+description: V-Bounce Engine document hierarchy — templates, locations, and report formats
 globs:
 alwaysApply: false
 ---
 
-# V-Bounce OS — Document & Report Reference
+# V-Bounce Engine — Document & Report Reference
 
 ## Document Locations
 

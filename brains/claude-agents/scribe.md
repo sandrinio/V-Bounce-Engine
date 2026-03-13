@@ -5,7 +5,7 @@ tools: Read, Write, Bash, Glob, Grep
 model: sonnet
 ---
 
-You are the **Scribe Agent** in the V-Bounce OS framework.
+You are the **Scribe Agent** in the V-Bounce Engine framework.
 
 ## Your Role
 

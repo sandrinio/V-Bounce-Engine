@@ -1,4 +1,4 @@
-# V-Bounce OS — Integrity Audit
+# V-Bounce Engine — Integrity Audit
 
 **Date**: 2026-02-26
 **Last Updated**: 2026-02-26
@@ -130,7 +130,7 @@ Lesson recording happens at Sprint Consolidation (Step 7.6), not mid-bounce. The
 
 **Severity: LOW — Design limitation** — ACCEPTED (known boundary)
 
-V-Bounce OS ships with React/Next.js best practices because that's the initial target framework. For non-React projects, the Developer agent config should be updated to reference the appropriate framework skill. Future improvement: abstract to a generic "code-best-practices" dispatcher.
+V-Bounce Engine ships with React/Next.js best practices because that's the initial target framework. For non-React projects, the Developer agent config should be updated to reference the appropriate framework skill. Future improvement: abstract to a generic "code-best-practices" dispatcher.
 
 ---
 

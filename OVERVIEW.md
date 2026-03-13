@@ -1,4 +1,4 @@
-# V-Bounce OS — System Overview
+# V-Bounce Engine — System Overview
 
 A structured framework for building production-ready software with AI agents. Three phases, six agents, one process.
 

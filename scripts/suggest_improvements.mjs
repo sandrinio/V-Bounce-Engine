@@ -159,7 +159,7 @@ suggestions.push({
   num: itemNum++,
   category: 'Health',
   title: 'Run vbounce doctor',
-  detail: 'Verify the V-Bounce OS installation is healthy after this sprint.',
+  detail: 'Verify the V-Bounce Engine installation is healthy after this sprint.',
   recommendation: 'Run: `vbounce doctor` — checks brain files, templates, scripts, state.json validity.',
   target: 'scripts/doctor.mjs',
   effort: 'Trivial',

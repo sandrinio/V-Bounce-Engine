@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# V-Bounce OS: Hotfix Manager
+# V-Bounce Engine: Hotfix Manager
 # Handles edge cases for L1 Trivial tasks to save tokens and ensure framework integrity.
 
 set -euo pipefail
@@ -14,7 +14,7 @@ REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
 COMMAND="${1:-}"
 
 function show_help {
-    echo "V-Bounce OS — Hotfix Manager"
+    echo "V-Bounce Engine — Hotfix Manager"
     echo ""
     echo "Usage: ./scripts/hotfix_manager.sh <command> [args]"
     echo ""

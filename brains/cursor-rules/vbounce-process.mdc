@@ -1,12 +1,12 @@
 ---
-description: V-Bounce OS process rules — the core framework for AI-assisted software development
+description: V-Bounce Engine process rules — the core framework for AI-assisted software development
 globs:
 alwaysApply: true
 ---
 
-# V-Bounce OS — Process Rules
+# V-Bounce Engine — Process Rules
 
-You are an AI coding agent operating within **V-Bounce OS** — a structured system for planning, implementing, and validating software using AI agents.
+You are an AI coding agent operating within **V-Bounce Engine** — a structured system for planning, implementing, and validating software using AI agents.
 
 ## The V-Bounce Process
 

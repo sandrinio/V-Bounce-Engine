@@ -108,7 +108,7 @@ flowchart LR
 | Type | Dependency | Status |
 |------|------------|--------|
 | **Requires** | vdoc installed in target project (`vdocs/_manifest.json` exists) | External — user's choice |
-| **Requires** | V-Bounce OS core (EPIC-001 / current release) | Done |
+| **Requires** | V-Bounce Engine core (EPIC-001 / current release) | Done |
 | **Unlocks** | Smarter Scribe agent (targeted audit vs full audit) | Waiting |
 
 ### 4.3 Integration Points
@@ -116,7 +116,7 @@ flowchart LR
 |--------|---------|------|
 | `vdocs/_manifest.json` | Semantic routing table — maps features to docs via tags and descriptions | vdoc README §Manifest |
 | `vdocs/*.md` | Feature-centric docs with Key Files sections listing source file paths | vdoc README §Documentation Template |
-| `vbounce.config.json` | Context budget settings — enrichment must respect token limits | V-Bounce OS config |
+| `vbounce.config.json` | Context budget settings — enrichment must respect token limits | V-Bounce Engine config |
 
 ### 4.4 Data Changes
 | Entity | Change | Fields |
@@ -260,9 +260,9 @@ Feature: vdoc Integration — Context-Aware Bouncing
 **References:**
 - vdoc README: `vdoc/README.md`
 - vdoc manifest schema: `vdoc/skills/claude/references/manifest-schema.json`
-- Scribe Agent: `V-Bounce-OS/brains/claude-agents/scribe.md`
-- Agent-team SKILL: `V-Bounce-OS/skills/agent-team/SKILL.md`
-- Context pack scripts: `V-Bounce-OS/scripts/prep_*_context.mjs`
+- Scribe Agent: `V-Bounce-Engine/brains/claude-agents/scribe.md`
+- Agent-team SKILL: `V-Bounce-Engine/skills/agent-team/SKILL.md`
+- Context pack scripts: `V-Bounce-Engine/scripts/prep_*_context.mjs`
 
 ---
 

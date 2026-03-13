@@ -1,6 +1,6 @@
 # Hotfix Workflow: Edge Cases & Mitigations
 
-This document outlines the critical edge cases, failure modes, and required mitigations for the **V-Bounce OS Hotfix (L1 Trivial)** workflow.
+This document outlines the critical edge cases, failure modes, and required mitigations for the **V-Bounce Engine Hotfix (L1 Trivial)** workflow.
 
 ---
 

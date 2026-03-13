@@ -65,10 +65,10 @@ const askQuestion = (query) => new Promise(resolve => rl.question(query, resolve
 
 function displayHelp() {
   console.log(`
-V-Bounce OS CLI
+V-Bounce Engine CLI
 
 Usage:
-  vbounce install <platform>           Install V-Bounce OS into a project
+  vbounce install <platform>           Install V-Bounce Engine into a project
   vbounce state show                   Show current sprint state
   vbounce state update <storyId> <state|--qa-bounce>
   vbounce sprint init <sprintId> <deliveryId> [--stories STORY-001,...]
@@ -287,7 +287,7 @@ if (command === 'install') {
     displayHelp();
   }
 
-  console.log(`\n🚀 Preparing to install V-Bounce OS for \x1b[36m${targetPlatform}\x1b[0m...\n`);
+  console.log(`\n🚀 Preparing to install V-Bounce Engine for \x1b[36m${targetPlatform}\x1b[0m...\n`);
 
   const toCopy = [];
   const toOverwrite = [];
@@ -380,7 +380,7 @@ if (command === 'install') {
       }
     }
 
-    console.log('\n✅ V-Bounce OS successfully installed! Welcome to the team.\n');
+    console.log('\n✅ V-Bounce Engine successfully installed! Welcome to the team.\n');
   });
 
 } else {

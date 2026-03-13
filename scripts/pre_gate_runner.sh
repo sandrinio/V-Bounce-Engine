@@ -31,7 +31,7 @@ fi
 # Resolve to absolute path
 WORKTREE_PATH="$(cd "$WORKTREE_PATH" && pwd)"
 
-echo -e "${CYAN}V-Bounce OS Pre-Gate Scanner${NC}"
+echo -e "${CYAN}V-Bounce Engine Pre-Gate Scanner${NC}"
 echo -e "Gate: ${YELLOW}${GATE_TYPE}${NC}"
 echo -e "Target: ${WORKTREE_PATH}"
 echo ""

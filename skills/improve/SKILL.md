@@ -1,13 +1,13 @@
 ---
 name: improve
-description: "Use when the V-Bounce OS framework needs to evolve based on accumulated agent feedback. Activates after sprint retros, when recurring friction patterns emerge, or when the user explicitly asks to improve the framework. Reads Process Feedback from sprint reports, identifies patterns, proposes specific changes to templates, skills, brain files, scripts, and agent configs, and applies approved changes. This is the system's self-improvement loop."
+description: "Use when the V-Bounce Engine framework needs to evolve based on accumulated agent feedback. Activates after sprint retros, when recurring friction patterns emerge, or when the user explicitly asks to improve the framework. Reads Process Feedback from sprint reports, identifies patterns, proposes specific changes to templates, skills, brain files, scripts, and agent configs, and applies approved changes. This is the system's self-improvement loop."
 ---
 
 # Framework Self-Improvement
 
 ## Purpose
 
-V-Bounce OS is not static. Every sprint generates friction signals from agents who work within the framework daily. This skill closes the feedback loop: it reads what agents struggled with, identifies patterns, and proposes targeted improvements to the framework itself.
+V-Bounce Engine is not static. Every sprint generates friction signals from agents who work within the framework daily. This skill closes the feedback loop: it reads what agents struggled with, identifies patterns, and proposes targeted improvements to the framework itself.
 
 **Core principle:** No framework change happens without human approval. The system suggests — the human decides.
 

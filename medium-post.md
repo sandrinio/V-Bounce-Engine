@@ -6,7 +6,7 @@
 
 Most people using AI to write code are doing it wrong. Not because the models are bad — they're shockingly good. But because we're treating them like autocomplete with opinions, when what they actually need is structure.
 
-I spent the last few months building **V-Bounce OS** — a framework that turns AI coding agents into a functioning development team. Not a single agent that does everything, but six specialized agents with clear roles, strict handoffs, and a process that catches mistakes before they reach production.
+I spent the last few months building **V-Bounce Engine** — a framework that turns AI coding agents into a functioning development team. Not a single agent that does everything, but six specialized agents with clear roles, strict handoffs, and a process that catches mistakes before they reach production.
 
 This post is the story of why I built it, how it works, and what I learned about making AI agents actually reliable.
 
@@ -24,9 +24,9 @@ What software engineering figured out decades ago applies to AI agents too: **se
 
 ## The Idea: What If AI Agents Worked Like a Real Team?
 
-V-Bounce OS is built on a simple principle: **the agent that writes the code should never be the agent that validates it.**
+V-Bounce Engine is built on a simple principle: **the agent that writes the code should never be the agent that validates it.**
 
-Instead of one agent doing everything, V-Bounce OS defines six specialized roles:
+Instead of one agent doing everything, V-Bounce Engine defines six specialized roles:
 
 - **Team Lead** — orchestrates the process, delegates work, never writes code
 - **Developer** — implements features, reads specs, writes code
@@ -43,7 +43,7 @@ This isn't just bureaucracy. It's how you make AI work auditable.
 
 ## The Three Phases
 
-V-Bounce OS runs in three phases per sprint:
+V-Bounce Engine runs in three phases per sprint:
 
 **Phase 1: Verification (Planning)** — Before any code is written, the human creates a document hierarchy: Charter (why are we building this?) → Roadmap (what are we shipping?) → Epics (feature scope) → Stories (implementation contracts) → Delivery Plan (sprint execution). Each document inherits from the level above. No level can be skipped. This sounds heavy, but AI agents are remarkably good at drafting these documents — you just need to give them the right templates and upstream context.
 
@@ -92,7 +92,7 @@ If QA bounces a story 3 times, or the Architect bounces it 3 times, it gets esca
 
 **3. LESSONS.md is the secret weapon.** Every agent reads a project-level LESSONS.md before doing work. It accumulates rules from past mistakes — "never use dynamic imports for this module," "the auth middleware must be called before the rate limiter," "the database connection pool has a max of 10." After a few sprints, the agents stop making the same mistakes because the lessons file encodes institutional knowledge.
 
-**4. The human stays in control at exactly the right moments.** V-Bounce OS doesn't try to eliminate human involvement — it moves it to where it matters most. Humans write the specs (Phase 1), approve sprint results (Phase 3), decide on escalations, and approve lessons. The boring, repetitive middle part (write code, test it, fix it, review it, merge it) is where agents excel.
+**4. The human stays in control at exactly the right moments.** V-Bounce Engine doesn't try to eliminate human involvement — it moves it to where it matters most. Humans write the specs (Phase 1), approve sprint results (Phase 3), decide on escalations, and approve lessons. The boring, repetitive middle part (write code, test it, fix it, review it, merge it) is where agents excel.
 
 **5. Correction Tax is the metric that matters.** Every Developer report includes a "Correction Tax" — what percentage of the work required human intervention. Track this across sprints and you get a real measure of agent reliability. If Correction Tax is climbing, something is wrong with the specs. If it's dropping, the LESSONS.md is working.
 
@@ -100,9 +100,9 @@ If QA bounces a story 3 times, or the Architect bounces it 3 times, it gets esca
 
 ## The Document Hierarchy: Why Planning Matters
 
-One of the most counterintuitive parts of V-Bounce OS is how much planning infrastructure it includes. Charter, Roadmap, Epics, Stories, Delivery Plan, Risk Registry — that's six document types before a single line of code is written.
+One of the most counterintuitive parts of V-Bounce Engine is how much planning infrastructure it includes. Charter, Roadmap, Epics, Stories, Delivery Plan, Risk Registry — that's six document types before a single line of code is written.
 
-But here's why it works: AI agents are excellent at following detailed specs and terrible at inferring requirements. A Story in V-Bounce OS has three sections designed for three different consumers: **The Spec** (human-readable requirements for the Developer), **The Truth** (Gherkin acceptance criteria for QA), and **The Implementation Guide** (AI-to-AI technical instructions). Each section is written by someone different and consumed by a different agent.
+But here's why it works: AI agents are excellent at following detailed specs and terrible at inferring requirements. A Story in V-Bounce Engine has three sections designed for three different consumers: **The Spec** (human-readable requirements for the Developer), **The Truth** (Gherkin acceptance criteria for QA), and **The Implementation Guide** (AI-to-AI technical instructions). Each section is written by someone different and consumed by a different agent.
 
 This separation means the Developer doesn't have to guess what "done" looks like — QA has an explicit checklist. The Architect doesn't have to guess what architectural decisions were made — the Roadmap has ADRs. The DevOps agent doesn't have to guess if the story is ready to merge — the gate reports are either PASS or FAIL.
 
@@ -110,7 +110,7 @@ Good documentation isn't overhead when agents are doing the work. It's the inter
 
 ---
 
-## What V-Bounce OS Is Not
+## What V-Bounce Engine Is Not
 
 It's not a product. It's a methodology implemented as a set of markdown files — templates, skills, brain files, and agent configs — that you drop into any git repo. It works with Claude Code, Cursor, Codex CLI, Gemini CLI, and Antigravity. Each tool gets a "brain file" that teaches it the V-Bounce process, and the agents operate through the same report-driven flow regardless of which AI tool is running them.
 
@@ -120,14 +120,14 @@ It's also not magic. You still need a human who understands the product and can 
 
 ## Where It's Going
 
-V-Bounce OS is still early. There are known limitations — the react-best-practices skill is React-specific in what's supposed to be a framework-agnostic system. The bounce loop is sequential when it could potentially parallelize QA and Architect for independent stories. The Scribe agent for documentation generation is functional but could be smarter about detecting what's changed.
+V-Bounce Engine is still early. There are known limitations — the react-best-practices skill is React-specific in what's supposed to be a framework-agnostic system. The bounce loop is sequential when it could potentially parallelize QA and Architect for independent stories. The Scribe agent for documentation generation is functional but could be smarter about detecting what's changed.
 
 But the core insight — that AI agents need process, not just prompts — has held up through every iteration. The bounce count goes down sprint over sprint. The LESSONS.md gets richer. The Correction Tax drops. The system learns.
 
 If you're building software with AI agents and finding that the code quality isn't consistent enough for production, the answer probably isn't a better model or a longer prompt. It's a process that separates implementation from validation, makes every handoff explicit, and keeps a human in the loop at the decisions that matter.
 
-That's what V-Bounce OS does. Three phases, six agents, one process.
+That's what V-Bounce Engine does. Three phases, six agents, one process.
 
 ---
 
-*V-Bounce OS is open and available as a set of markdown files you can drop into any git repo. If you want to try it, the SETUP.md guide walks through adding it to an existing project in six steps.*
+*V-Bounce Engine is open and available as a set of markdown files you can drop into any git repo. If you want to try it, the SETUP.md guide walks through adding it to an existing project in six steps.*

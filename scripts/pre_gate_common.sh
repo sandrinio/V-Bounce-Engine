@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# pre_gate_common.sh — Shared gate check functions for V-Bounce OS
+# pre_gate_common.sh — Shared gate check functions for V-Bounce Engine
 # Sourced by pre_gate_runner.sh. Never run directly.
 
 set -euo pipefail

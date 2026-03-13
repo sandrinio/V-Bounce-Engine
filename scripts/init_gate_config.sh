@@ -17,7 +17,7 @@ YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-echo -e "${CYAN}V-Bounce OS Gate Config Initializer${NC}"
+echo -e "${CYAN}V-Bounce Engine Gate Config Initializer${NC}"
 echo -e "Project: ${PROJECT_PATH}"
 echo ""
 

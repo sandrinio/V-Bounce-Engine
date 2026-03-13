@@ -1,10 +1,10 @@
-# V-Bounce OS — GitHub Copilot Instructions
+# V-Bounce Engine — GitHub Copilot Instructions
 
-This project uses **V-Bounce OS** — a structured AI-agent development framework.
+This project uses **V-Bounce Engine** — a structured AI-agent development framework.
 
 ## What This Means for You
 
-You are operating in Tier 4 (Awareness) mode. You understand the project uses V-Bounce OS but you do not orchestrate agents.
+You are operating in Tier 4 (Awareness) mode. You understand the project uses V-Bounce Engine but you do not orchestrate agents.
 
 ## Key Behaviors
 

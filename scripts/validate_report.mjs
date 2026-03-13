@@ -3,7 +3,7 @@
 /**
  * validate_report.mjs
  * 
- * Strict YAML Frontmatter validation for V-Bounce OS Agent Reports.
+ * Strict YAML Frontmatter validation for V-Bounce Engine Agent Reports.
  * Fails loudly if an agent hallucinates formatting or omits required fields,
  * so the orchestrator can bounce the prompt back.
  */
